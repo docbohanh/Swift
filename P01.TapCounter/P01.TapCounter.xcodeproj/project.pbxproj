@@ -12,6 +12,7 @@
 		136450761E14202600FC8B2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136450741E14202600FC8B2E /* Main.storyboard */; };
 		136450781E14202600FC8B2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 136450771E14202600FC8B2E /* Assets.xcassets */; };
 		1364507B1E14202600FC8B2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136450791E14202600FC8B2E /* LaunchScreen.storyboard */; };
+		4465118EF2AB032BEE91F724 /* Pods_P01_TapCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CD2DD5E05E2974CF34070B /* Pods_P01_TapCounter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		136450771E14202600FC8B2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1364507A1E14202600FC8B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1364507C1E14202600FC8B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30CD2DD5E05E2974CF34070B /* Pods_P01_TapCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_P01_TapCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4703A4F5E52D05B5F48E56E /* Pods-P01.TapCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-P01.TapCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-P01.TapCounter/Pods-P01.TapCounter.debug.xcconfig"; sourceTree = "<group>"; };
+		E9727A43499C2E647D29A6D4 /* Pods-P01.TapCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-P01.TapCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-P01.TapCounter/Pods-P01.TapCounter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4465118EF2AB032BEE91F724 /* Pods_P01_TapCounter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				1364506F1E14202500FC8B2E /* P01.TapCounter */,
 				1364506E1E14202500FC8B2E /* Products */,
+				2A1DFE575649C4B73B2AA586 /* Pods */,
+				6279555699790F8C3CDAE78F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = P01.TapCounter;
 			sourceTree = "<group>";
 		};
+		2A1DFE575649C4B73B2AA586 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4703A4F5E52D05B5F48E56E /* Pods-P01.TapCounter.debug.xcconfig */,
+				E9727A43499C2E647D29A6D4 /* Pods-P01.TapCounter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6279555699790F8C3CDAE78F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30CD2DD5E05E2974CF34070B /* Pods_P01_TapCounter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1364507F1E14202600FC8B2E /* Build configuration list for PBXNativeTarget "P01.TapCounter" */;
 			buildPhases = (
+				D3730C627C25AE37B3AC2515 /* [CP] Check Pods Manifest.lock */,
 				136450691E14202400FC8B2E /* Sources */,
 				1364506A1E14202400FC8B2E /* Frameworks */,
 				1364506B1E14202400FC8B2E /* Resources */,
+				CD94EA48DDBF35260F1E4B92 /* [CP] Embed Pods Frameworks */,
+				AD9BF1B8081BBCCC6FA06EFF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AD9BF1B8081BBCCC6FA06EFF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-P01.TapCounter/Pods-P01.TapCounter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD94EA48DDBF35260F1E4B92 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-P01.TapCounter/Pods-P01.TapCounter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3730C627C25AE37B3AC2515 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		136450691E14202400FC8B2E /* Sources */ = {
@@ -257,6 +332,7 @@
 		};
 		136450801E14202600FC8B2E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4703A4F5E52D05B5F48E56E /* Pods-P01.TapCounter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
@@ -270,6 +346,7 @@
 		};
 		136450811E14202600FC8B2E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9727A43499C2E647D29A6D4 /* Pods-P01.TapCounter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
