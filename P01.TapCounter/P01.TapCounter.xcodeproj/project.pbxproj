@@ -8,21 +8,66 @@
 
 /* Begin PBXBuildFile section */
 		136450711E14202500FC8B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450701E14202500FC8B2E /* AppDelegate.swift */; };
-		136450731E14202500FC8B2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450721E14202500FC8B2E /* ViewController.swift */; };
 		136450761E14202600FC8B2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136450741E14202600FC8B2E /* Main.storyboard */; };
 		136450781E14202600FC8B2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 136450771E14202600FC8B2E /* Assets.xcassets */; };
 		1364507B1E14202600FC8B2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136450791E14202600FC8B2E /* LaunchScreen.storyboard */; };
+		1364508B1E14221700FC8B2E /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 136450841E14221700FC8B2E /* Lato-BlackItalic.ttf */; };
+		1364508C1E14221700FC8B2E /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 136450851E14221700FC8B2E /* Lato-Bold.ttf */; };
+		1364508D1E14221700FC8B2E /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 136450861E14221700FC8B2E /* Lato-Italic.ttf */; };
+		1364508E1E14221700FC8B2E /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 136450871E14221700FC8B2E /* Lato-Light.ttf */; };
+		1364508F1E14221700FC8B2E /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 136450881E14221700FC8B2E /* Lato-Medium.ttf */; };
+		136450901E14221700FC8B2E /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 136450891E14221700FC8B2E /* Lato-Regular.ttf */; };
+		136450911E14221700FC8B2E /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1364508A1E14221700FC8B2E /* Lato-Semibold.ttf */; };
+		136450931E14222D00FC8B2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450921E14222D00FC8B2E /* Constants.swift */; };
+		136450951E14236700FC8B2E /* PHExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 136450941E14236700FC8B2E /* PHExtensions.framework */; };
+		136450961E14236700FC8B2E /* PHExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 136450941E14236700FC8B2E /* PHExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1364509A1E1423B100FC8B2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450991E1423B100FC8B2E /* ViewController.swift */; };
+		136450A21E1423FC00FC8B2E /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1364509D1E1423FC00FC8B2E /* MKButton.swift */; };
+		136450A31E1423FC00FC8B2E /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1364509E1E1423FC00FC8B2E /* MKColor.swift */; };
+		136450A41E1423FC00FC8B2E /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1364509F1E1423FC00FC8B2E /* MKLayer.swift */; };
+		136450A51E1423FC00FC8B2E /* MKTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450A01E1423FC00FC8B2E /* MKTableViewCell.swift */; };
+		136450A61E1423FC00FC8B2E /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450A11E1423FC00FC8B2E /* MKTextField.swift */; };
+		136450A81E14263800FC8B2E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450A71E14263800FC8B2E /* Color.swift */; };
 		4465118EF2AB032BEE91F724 /* Pods_P01_TapCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CD2DD5E05E2974CF34070B /* Pods_P01_TapCounter.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		136450971E14236700FC8B2E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				136450961E14236700FC8B2E /* PHExtensions.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1364506D1E14202500FC8B2E /* P01.TapCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P01.TapCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		136450701E14202500FC8B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		136450721E14202500FC8B2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		136450751E14202600FC8B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		136450771E14202600FC8B2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1364507A1E14202600FC8B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1364507C1E14202600FC8B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		136450841E14221700FC8B2E /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		136450851E14221700FC8B2E /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		136450861E14221700FC8B2E /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		136450871E14221700FC8B2E /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		136450881E14221700FC8B2E /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		136450891E14221700FC8B2E /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		1364508A1E14221700FC8B2E /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		136450921E14222D00FC8B2E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		136450941E14236700FC8B2E /* PHExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PHExtensions.framework; path = FrameWork/PHExtensions.framework; sourceTree = "<group>"; };
+		136450991E1423B100FC8B2E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1364509D1E1423FC00FC8B2E /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
+		1364509E1E1423FC00FC8B2E /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
+		1364509F1E1423FC00FC8B2E /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
+		136450A01E1423FC00FC8B2E /* MKTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTableViewCell.swift; sourceTree = "<group>"; };
+		136450A11E1423FC00FC8B2E /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
+		136450A71E14263800FC8B2E /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		30CD2DD5E05E2974CF34070B /* Pods_P01_TapCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_P01_TapCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4703A4F5E52D05B5F48E56E /* Pods-P01.TapCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-P01.TapCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-P01.TapCounter/Pods-P01.TapCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		E9727A43499C2E647D29A6D4 /* Pods-P01.TapCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-P01.TapCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-P01.TapCounter/Pods-P01.TapCounter.release.xcconfig"; sourceTree = "<group>"; };
@@ -33,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136450951E14236700FC8B2E /* PHExtensions.framework in Frameworks */,
 				4465118EF2AB032BEE91F724 /* Pods_P01_TapCounter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,14 +107,68 @@
 		1364506F1E14202500FC8B2E /* P01.TapCounter */ = {
 			isa = PBXGroup;
 			children = (
+				1364509B1E1423C600FC8B2E /* View */,
+				136450981E1423B100FC8B2E /* Controller */,
+				136450821E1421D200FC8B2E /* Support */,
 				136450701E14202500FC8B2E /* AppDelegate.swift */,
-				136450721E14202500FC8B2E /* ViewController.swift */,
 				136450741E14202600FC8B2E /* Main.storyboard */,
 				136450771E14202600FC8B2E /* Assets.xcassets */,
 				136450791E14202600FC8B2E /* LaunchScreen.storyboard */,
 				1364507C1E14202600FC8B2E /* Info.plist */,
 			);
 			path = P01.TapCounter;
+			sourceTree = "<group>";
+		};
+		136450821E1421D200FC8B2E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				136450831E14221700FC8B2E /* Lato Font */,
+				136450921E14222D00FC8B2E /* Constants.swift */,
+				136450A71E14263800FC8B2E /* Color.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		136450831E14221700FC8B2E /* Lato Font */ = {
+			isa = PBXGroup;
+			children = (
+				136450841E14221700FC8B2E /* Lato-BlackItalic.ttf */,
+				136450851E14221700FC8B2E /* Lato-Bold.ttf */,
+				136450861E14221700FC8B2E /* Lato-Italic.ttf */,
+				136450871E14221700FC8B2E /* Lato-Light.ttf */,
+				136450881E14221700FC8B2E /* Lato-Medium.ttf */,
+				136450891E14221700FC8B2E /* Lato-Regular.ttf */,
+				1364508A1E14221700FC8B2E /* Lato-Semibold.ttf */,
+			);
+			path = "Lato Font";
+			sourceTree = "<group>";
+		};
+		136450981E1423B100FC8B2E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				136450991E1423B100FC8B2E /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1364509B1E1423C600FC8B2E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1364509C1E1423FC00FC8B2E /* MateriaKit */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1364509C1E1423FC00FC8B2E /* MateriaKit */ = {
+			isa = PBXGroup;
+			children = (
+				1364509D1E1423FC00FC8B2E /* MKButton.swift */,
+				1364509E1E1423FC00FC8B2E /* MKColor.swift */,
+				1364509F1E1423FC00FC8B2E /* MKLayer.swift */,
+				136450A01E1423FC00FC8B2E /* MKTableViewCell.swift */,
+				136450A11E1423FC00FC8B2E /* MKTextField.swift */,
+			);
+			path = MateriaKit;
 			sourceTree = "<group>";
 		};
 		2A1DFE575649C4B73B2AA586 /* Pods */ = {
@@ -83,6 +183,7 @@
 		6279555699790F8C3CDAE78F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				136450941E14236700FC8B2E /* PHExtensions.framework */,
 				30CD2DD5E05E2974CF34070B /* Pods_P01_TapCounter.framework */,
 			);
 			name = Frameworks;
@@ -101,6 +202,7 @@
 				1364506B1E14202400FC8B2E /* Resources */,
 				CD94EA48DDBF35260F1E4B92 /* [CP] Embed Pods Frameworks */,
 				AD9BF1B8081BBCCC6FA06EFF /* [CP] Copy Pods Resources */,
+				136450971E14236700FC8B2E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,9 +253,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1364508B1E14221700FC8B2E /* Lato-BlackItalic.ttf in Resources */,
+				1364508F1E14221700FC8B2E /* Lato-Medium.ttf in Resources */,
+				1364508C1E14221700FC8B2E /* Lato-Bold.ttf in Resources */,
 				1364507B1E14202600FC8B2E /* LaunchScreen.storyboard in Resources */,
+				136450901E14221700FC8B2E /* Lato-Regular.ttf in Resources */,
+				136450911E14221700FC8B2E /* Lato-Semibold.ttf in Resources */,
 				136450781E14202600FC8B2E /* Assets.xcassets in Resources */,
+				1364508D1E14221700FC8B2E /* Lato-Italic.ttf in Resources */,
 				136450761E14202600FC8B2E /* Main.storyboard in Resources */,
+				1364508E1E14221700FC8B2E /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +321,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				136450731E14202500FC8B2E /* ViewController.swift in Sources */,
+				1364509A1E1423B100FC8B2E /* ViewController.swift in Sources */,
+				136450A41E1423FC00FC8B2E /* MKLayer.swift in Sources */,
+				136450A21E1423FC00FC8B2E /* MKButton.swift in Sources */,
 				136450711E14202500FC8B2E /* AppDelegate.swift in Sources */,
+				136450A31E1423FC00FC8B2E /* MKColor.swift in Sources */,
+				136450A61E1423FC00FC8B2E /* MKTextField.swift in Sources */,
+				136450A51E1423FC00FC8B2E /* MKTableViewCell.swift in Sources */,
+				136450931E14222D00FC8B2E /* Constants.swift in Sources */,
+				136450A81E14263800FC8B2E /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,8 +450,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4703A4F5E52D05B5F48E56E /* Pods-P01.TapCounter.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FrameWork",
+				);
 				INFOPLIST_FILE = P01.TapCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.binhanh.P01-TapCounter";
@@ -348,8 +469,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E9727A43499C2E647D29A6D4 /* Pods-P01.TapCounter.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FrameWork",
+				);
 				INFOPLIST_FILE = P01.TapCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.binhanh.P01-TapCounter";
@@ -377,6 +503,7 @@
 				136450811E14202600FC8B2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
