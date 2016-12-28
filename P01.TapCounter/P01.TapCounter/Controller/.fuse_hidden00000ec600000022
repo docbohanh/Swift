@@ -48,6 +48,9 @@ extension ViewController {
     fileprivate func setupAllSubViews() {
         
         view.backgroundColor = .white
+        
+        UIApplication.shared.statusBarStyle = .default
+        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.isTranslucent = false
         title = "Tap Counter"
         
@@ -68,10 +71,9 @@ extension ViewController {
     fileprivate func setupAllConstraints() {
         
         counter.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.width.equalTo(200)
+            make.center.equalTo(view)
+            make.width.equalTo(100)
             make.height.equalTo(200)
-            make.bottom.equalTo(view.snp.bottom).inset(view.frame.height / 2)
         }
         
         tapButton.snp.makeConstraints { (make) in
@@ -85,7 +87,7 @@ extension ViewController {
     
     fileprivate func setupLabel() -> UILabel {
         let label = UILabel()
-        label.font = UIFont(name: FontType.latoSemibold.., size: 90)
+        label.font = UIFont(name: FontType.latoBold.., size: 30)
         label.textColor = UIColor.orange
         label.textAlignment = .center
         label.text = "0"
@@ -115,12 +117,10 @@ extension ViewController {
 //MARK: PRIVATE METHOD
 extension ViewController {
     func reset(_ sender: UIBarButtonItem) {
-        counter.text = "0"
+        
     }
     
     func tapMe(_ sender: UIButton) {
-        if let number = counter.text, let count = Int(number) {
-            counter.text = String(count + 1)
-        }
+        
     }
 }
