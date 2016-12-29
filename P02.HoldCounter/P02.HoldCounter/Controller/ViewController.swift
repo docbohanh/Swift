@@ -123,7 +123,7 @@ extension ViewController {
     }
     
     fileprivate func setupButton(title: String) -> UIButton {
-        let button = MKButton()
+        let button = UIButton()
         button.setTitle(title, for: .normal)
         button.titleLabel?.font = UIFont(name: FontType.latoSemibold.., size: FontSize.large.. + 1)
         button.setTitleColor(UIColor.main, for: .normal)
