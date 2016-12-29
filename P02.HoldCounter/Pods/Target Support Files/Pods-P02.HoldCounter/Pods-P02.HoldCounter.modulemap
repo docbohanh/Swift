@@ -1,0 +1,6 @@
+framework module Pods_P02_HoldCounter {
+  umbrella header "Pods-P02.HoldCounter-umbrella.h"
+
+  export *
+  module * { export * }
+}
