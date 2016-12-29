@@ -56,15 +56,12 @@ extension ViewController {
         }
     }
     
-    func tapMe(_ sender: UIButton) {
-        countMe()
-    }
     
     func holdMe(_ sender: UIButton) {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.countMe), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.countMe), userInfo: nil, repeats: true)
     }
     
-    func escape(_ sender: UIButton) {
+    func letMeOut(_ sender: UIButton) {
         timer.invalidate()
     }
     
@@ -84,9 +81,8 @@ extension ViewController {
         
         counter = setupLabel()
         tapButton = setupButton(title: "Tap or Hold")
-        tapButton.addTarget(self, action: #selector(self.tapMe(_:)), for: [.touchUpInside])
         tapButton.addTarget(self, action: #selector(self.holdMe(_:)), for: .touchDown)
-        tapButton.addTarget(self, action: #selector(self.escape(_:)), for: [.touchUpOutside, .touchUpInside])
+        tapButton.addTarget(self, action: #selector(self.letMeOut(_:)), for: [.touchUpOutside, .touchUpInside])
         
         setupBarButton()
         
