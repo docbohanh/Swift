@@ -1,3 +1,0 @@
-framework module PHExtensions {
-    header "PHExtensions-Swift.h"
-}

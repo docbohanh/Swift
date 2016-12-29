@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PHExtensions
 
 open class MKTableViewCell : UITableViewCell {
     
@@ -120,7 +119,7 @@ open class MKTableViewCell : UITableViewCell {
     
     fileprivate func setup() {
         backgroundColor = UIColor.clear
-        textLabel?.font = UIFont(name: FontType.latoRegular.., size: FontSize.normal++)
+        textLabel?.font = UIFont(name: FontType.latoRegular.., size: FontSize.normal.rawValue + 1)
         textLabel?.textColor = UIColor.SideBar.textColor()
         
     }

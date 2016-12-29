@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import PHExtensions
 
 class ViewController: UIViewController {
     
@@ -52,7 +51,8 @@ extension ViewController {
         title = "Tap Counter"
         
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.main,
-                                                                   NSFontAttributeName : UIFont(name: FontType.latoRegular.., size: FontSize.normal++)!]
+                                                                   NSFontAttributeName : UIFont(name: FontType.latoRegular.rawValue,
+                                                                                                size: FontSize.normal.. + 1)!]
         
         counter = setupLabel()
         tapButton = setupButton(title: "Tap Me")
@@ -95,7 +95,7 @@ extension ViewController {
     fileprivate func setupButton(title: String) -> UIButton {
         let button = MKButton()
         button.setTitle(title, for: .normal)
-        button.titleLabel?.font = UIFont(name: FontType.latoSemibold.., size: FontSize.large++)
+        button.titleLabel?.font = UIFont(name: FontType.latoSemibold.., size: FontSize.large.. + 1)
         button.setTitleColor(UIColor.main, for: .normal)
         button.layer.cornerRadius = 4
         button.layer.borderWidth = 1 / UIScreen.main.scale
