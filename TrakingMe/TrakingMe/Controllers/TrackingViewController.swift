@@ -147,9 +147,8 @@ extension TrackingViewController {
     }
     
     func back(_ sender: UIBarButtonItem) {
-        
         _ = navigationController?.popViewController(animated: true)
-        return
+        
     }
     
     func myLocation(_ sender: MapButton) {
@@ -170,7 +169,7 @@ extension TrackingViewController {
     
     func animationForTracking() {
         
-        guard let vehicleTrip = vehicleTrip, vehicleTrip.points.count > 0 else {
+        guard let tracking = tracking, let vehicleTrip = vehicleTrip, vehicleTrip.points.count > 0 else {
             
             self.vehicleTrip = nil
             floatView.info = nil
@@ -226,22 +225,24 @@ extension TrackingViewController {
          */
         footerView.slider.setValue(Float(0), animated: true)
         self.footerView.playState = .play
-        animationMoveMarkerToPosition(vehicleTrip.points[currentPosition].coordinate,
-                                      time: vehicleTrip.timeArray[currentPosition])
+        
+        animationMoveMarkerToPosition(
+            vehicleTrip.points[currentPosition].coordinate,
+            time: vehicleTrip.timeArray[currentPosition],
+            direction: tracking.directions[currentPosition].direction)
         
     }
 
     /// Animation di chuyển Marker
-    func animationMoveMarkerToPosition(_ position: CLLocationCoordinate2D, time: TimeInterval) {
-        
-        guard let tracking = tracking else { return }
+    func animationMoveMarkerToPosition(_ position: CLLocationCoordinate2D, time: TimeInterval, direction: CLLocationDegrees) {
         
         if carMarker == nil { setupCarMarker() }
         
         let duration = 1.second / footerView.playSpeed.multiplier
         
+        print("duration: \(duration)")
         carMarker?.animationMarkerMoveToPosition(position, duration: duration)
-        carMarker?.animationRotationWithDirection(tracking.directions[self.currentPosition].direction)
+        carMarker?.animationRotationWithDirection(direction)
         
         if trackingWhileDraggingSlider {
             animateOnMap(duration, mapView.animate(toLocation: position))
@@ -251,6 +252,7 @@ extension TrackingViewController {
         
         Timer.after(duration) { _ in
             
+            guard let tracking = self.tracking else { return }
             
             guard let vehicleTrip = self.vehicleTrip else {
                 return
@@ -267,11 +269,15 @@ extension TrackingViewController {
             self.footerView.slider.setValue(Float(self.currentPosition), animated: true)
             guard case .play = self.footerView.playState else { return }
             
-            self.animationMoveMarkerToPosition(vehicleTrip.points[self.currentPosition].coordinate,
-                                               time: vehicleTrip.timeArray[self.currentPosition])
+            self.animationMoveMarkerToPosition(
+                vehicleTrip.points[self.currentPosition].coordinate,
+                time: vehicleTrip.timeArray[self.currentPosition],
+                direction: tracking.directions[self.currentPosition].direction)
+            
             self.floatView.info = vehicleTrip.points[self.currentPosition]
             
         }
+        
     }
 
     
@@ -434,15 +440,15 @@ extension TrackingViewController: TrackingControlFooterViewDelegate {
         switch footerView.playState {
         case .play:
             
-            guard let vehicleTrip = vehicleTrip else { return }
+            guard let tracking = tracking, let vehicleTrip = vehicleTrip else { return }
             if currentPosition >= vehicleTrip.points.count {
                 currentPosition = 0
                 footerView.slider.value = 0
-                //                marker?.animationMarkerMoveToPosition(vehicleTrip.points[currentPosition].coordinate, duration: 0.second)
-                //                animateOnMap(0.second, mapView.animateToLocation(vehicleTrip.points[currentPosition].coordinate))
-                //                return
             }
-            animationMoveMarkerToPosition(vehicleTrip.points[currentPosition].coordinate, time:  vehicleTrip.timeArray[currentPosition])
+            animationMoveMarkerToPosition(
+                vehicleTrip.points[currentPosition].coordinate,
+                time:  vehicleTrip.timeArray[currentPosition],
+                direction: tracking.directions[currentPosition].direction)
         default:
             break
         }
