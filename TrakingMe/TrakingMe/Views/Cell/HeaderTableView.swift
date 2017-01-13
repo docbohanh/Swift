@@ -54,8 +54,8 @@ class HeaderTableView: UIView {
         
         
         addSubview(title)
-//        addSubview(seperator)
-//        addSubview(arrow)
+        addSubview(seperator)
+        addSubview(arrow)
     }
     
     func setupImageView(image: UIImage) -> UIImageView {

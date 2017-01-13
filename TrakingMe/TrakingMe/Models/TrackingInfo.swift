@@ -6,23 +6,34 @@
 //  Copyright © 2017 Bình Anh Electonics. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import GoogleMaps
 
 class TrackingInfo {
+    let totalKm: CGFloat
+    let directionDetail: String
+    let stopPointList: [StopPoint]
+    let velocityPointList: [VelocityPoint]
+    let timePoint: TimePoint
+    let gsmPoint: [GSMPoint]
     
-    open let totalDistance: Double
-    open let rawPath: String
-    open let stopPoints: [StopPoint]
-    open let gsmPoints: [GSMPoint]
-    open let velocityPoints: [Int]
-    open let timePoints: [TimeInterval]
+    init(totalKm: CGFloat, directionDetail: String, stopPointList: [StopPoint], velocityPointList: [VelocityPoint], timePoint: TimePoint, gsmPoint: [GSMPoint]) {
+        
+        self.totalKm  = totalKm
+        self.directionDetail = directionDetail
+        self.stopPointList = stopPointList
+        self.velocityPointList = velocityPointList
+        self.timePoint = timePoint
+        self.gsmPoint = gsmPoint
+    }
     
-    init(totalDistance: Double, rawPath: String, stopPoints: [StopPoint], gsmPoints: [GSMPoint], velocityPoints: [Int], timePoints: [TimeInterval]) {
-        self.totalDistance  = totalDistance
-        self.rawPath        = rawPath
-        self.stopPoints     = stopPoints
-        self.gsmPoints      = gsmPoints
-        self.velocityPoints = velocityPoints
-        self.timePoints     = timePoints
+    init(tracking: Tracking) {
+        
+        self.totalKm            = CGFloat(tracking.totalKm)
+        self.directionDetail    = Utility.shared.getGMSPath(from: tracking.coordinates).encodedPath()
+        self.stopPointList      = []
+        self.velocityPointList  = tracking.velocityPoints
+        self.timePoint          = TimePoint(startTime: tracking.movements[0].timestamp, addedTime: tracking.times.map { Int($0) })
+        self.gsmPoint           = []
     }
 }

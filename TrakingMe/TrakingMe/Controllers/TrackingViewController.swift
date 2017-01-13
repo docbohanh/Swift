@@ -24,7 +24,7 @@ protocol InspectableMarker {}
 
 class TrackingViewController: GeneralViewController {
     
-    fileprivate enum Size: CGFloat {
+    enum Size: CGFloat {
         case padding5 = 5, padding15 = 15, button = 44
     }
     
@@ -33,29 +33,33 @@ class TrackingViewController: GeneralViewController {
     let saveTrackingSignal = PublishSubject<Void>()
         
     var mapView: GMSMapView!
-    fileprivate var myLocation: MapButton!
-    fileprivate var routePolyline: GMSPolyline!
+    var myLocation: MapButton!
     var info: UIBarButtonItem!
     
     var floatView: TrackingFloatView!
     
-    var controlFooterView: TrackingControlFooterView = {
-        let view = TrackingControlFooterView()
-        return view
-    }()
+    var footerView: TrackingControlFooterView!    
     
-    var infoWindow: TrackingMarkerInfoWindow!
+    var floatViewLeadingConstraint: Constraint!
+    var floatViewWidthConstraint: Constraint!
+    var floatViewHeightConstraint: Constraint!
+    var footerViewBottomConstraint: Constraint!
     
-    fileprivate var floatViewLeadingConstraint: Constraint!
-    fileprivate var floatViewWidthConstraint: Constraint!
-    fileprivate var floatViewHeightConstraint: Constraint!
-    var controlFooterViewHeightConstraint: Constraint!
-    
-    var trackingWhileDraggingSlider = Variable<Bool>(true)
-    var trackingAutomatically = PublishSubject<Void>()
+    /// VAR
     
     var currentPosition: Int = 0
-    var date: Date!
+    
+    var trackingWhileDraggingSlider: Bool = true
+    
+    var vehicleOnline: VehicleOnline!
+    
+    var carMarker: CarMarker?
+    
+    var polyline: GMSPolyline?
+    
+    var vehicleTrip: VehicleTrip?
+    
+    var stopPointMarker: [GMSMarker] = []
     
     var state: State = .normal
     
@@ -73,14 +77,6 @@ class TrackingViewController: GeneralViewController {
     
     weak var delegate: TrackingViewControllerDelegate?
     
-    var polyline: GMSPolyline?
-    var staticMarkers: [GMSMarker] = []
-    var carMarker: VehicleMarker!
-    var inspectableMarkers: [InspectableMarker] = []
-    var viewModel: TrackingViewModel!
-    
-    var timer: Timer!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,27 +91,10 @@ class TrackingViewController: GeneralViewController {
         
         drawTracking() {
             self.zoomBoundsMap(coordinates: tracking.movements.map { $0.coordinate }, incudingMyLocation: nil)
-            
+            self.setupCarMarker()
         }
         
-        let info = RealTimeVehicle(ID: 1,
-                                   plate: "35M1.03431",
-                                   coordinate: tracking.movements.map { $0.coordinate }[0],
-                                   status: VehicleStatus.EngineOff,
-                                   velocity: 4,
-                                   driverName: "MILIKET",
-                                   driverPhone: "0973360262",
-                                   direction: tracking.directions[0].direction,
-                                   updateTime: Date().timeIntervalSince1970,
-                                   vehicleTime: Date().timeIntervalSince1970,
-                                   iconCode: VehicleIcon.car,
-                                   privateCode: "26626")
         
-        carMarker = VehicleMarker(info: info) //viewModel.vehicleInfo)
-        carMarker.zIndex = 15
-        carMarker.position = tracking.movements.map { $0.coordinate }[0]
-        carMarker.tracksViewChanges = true
-        carMarker.map = mapView
         
     }
     
@@ -139,6 +118,10 @@ class TrackingViewController: GeneralViewController {
         if state == .tracking {
             self.mapView.animate(to: GMSCameraPosition.camera(withTarget: location, zoom: 15.5))
         }
+        
+        animateOnMap(0.3.second, mapView.animate(to: GMSCameraPosition.camera(withTarget: tracking.coordinates[0], zoom: 16))) {
+            self.animationForTracking()
+        }
     }
 }
 
@@ -146,34 +129,9 @@ class TrackingViewController: GeneralViewController {
 //MARK: SELECTOR
 extension TrackingViewController {
     
-    func info(_ sender: UIBarButtonItem) {
+    func infoFloatView(_ sender: UIBarButtonItem) {
+        
         animationFloatView(floatView.frame.origin.x != 5)
-        
-    }
-    
-    func playTracking(_ sender: UIButton) {
-        guard let tracking = tracking else { return }
-        
-        print("Coordinates: \(tracking.coordinates.count)")
-        print("coupleMovement: \(tracking.coupleMovement.count)")
-        print("timeArray: \(tracking.times.count)")
-        print("directions: \(tracking.directions.count)")
-        print("velocitysCount: \(tracking.velocitys.count)")
-        print("velocitysMax: \(tracking.velocityMax)")
-        print("velocitysMedium: \(tracking.velocityMedium)")
-        
-        let tMax = tracking.times.max()
-        let tMin = tracking.times.min()
-        print("time max: \(tMax) - time min: \(tMin)")
-        
-        mapView.animate(to: GMSCameraPosition.camera(withTarget: tracking.movements[0].coordinate, zoom: 17))
-        
-        guard currentPosition < tracking.movements.count - 1 else { return }
-        
-        date = Date().addingTimeInterval(tracking.times[currentPosition])
-        
-        timer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(self.animationForTracking), userInfo: nil, repeats: true)
-        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
         
     }
     
@@ -187,7 +145,6 @@ extension TrackingViewController {
     }
     
     func back(_ sender: UIBarButtonItem) {
-        timer.invalidate()
         _ = navigationController?.popViewController(animated: true)
     }
     
@@ -208,59 +165,68 @@ extension TrackingViewController {
 extension TrackingViewController {
     
     func animationForTracking() {
-        guard let marker = carMarker, let tracking = tracking else { return }
         
-        guard currentPosition < tracking.movements.count - 1 else {
+        guard let vehicleTrip = vehicleTrip, vehicleTrip.points.count > 0 else {
             
-            controlFooterView.slider.value = Float(tracking.movements.count)
-            currentPosition = tracking.movements.count
+            self.vehicleTrip = nil
+            floatView.info = nil
+            floatView.totalDistance = 0
+            footerView.sliderCount = 0
+            //            floatViewLeadingConstraint.update(offset: -140)
+            //            footerViewBottomConstraint.update(offset: 158)
+            
+            navigationItem.rightBarButtonItem = nil
+            UIView.animate(withDuration: 0.3.second, animations: { self.view.layoutSubviews() })
+            
+            animationFloatView(false)
             return
         }
         
+        currentPosition = 0
         
-        animateOnMap(0.3.second, mapView.animate(toLocation: tracking.movements[currentPosition].coordinate))
+        drawPolyline(vehicleTrip.path)
         
-        currentPosition += 1; print(self.currentPosition)
-        date = Date().addingTimeInterval(tracking.times[currentPosition])
-        controlFooterView.slider.setValue(Float(currentPosition), animated: true)
         
-        marker.animationRotationWithDirection(tracking.directions[currentPosition].direction)
-        marker.animationMarkerMoveToPosition(
-            tracking.movements[currentPosition].coordinate,
-            duration: tracking.times[currentPosition])
+        print("vehicleTrip.stopPoints: \(vehicleTrip.stopPoints.count)")
         
+        stopPointMarker = vehicleTrip.stopPoints.map { setupStopPointMarker($0.startCoordinate) }
+        
+        stopPointMarker.insert(setupPointMarker(vehicleTrip.points[0].coordinate,
+                                                icon: Icon.Tracking.Start,
+                                                zIndex: 2), at: 0)
+        stopPointMarker.append(setupPointMarker(vehicleTrip.points[vehicleTrip.points.count - 1].coordinate,
+                                                icon: Icon.Tracking.End,
+                                                zIndex: 2))
+        
+        
+        /**
+         Đẩy thông tin vào float view và FooterView
+         */
+        floatView.info = vehicleTrip.points[currentPosition]
+        floatView.totalDistance = vehicleTrip.totalDistance * 1000
+        footerView.sliderCount = vehicleTrip.points.count
+        animationFloatView(true)
+        
+        /**
+         Xử lý view
+         */
+        
+        floatViewLeadingConstraint.update(offset: 5)
+        footerViewBottomConstraint.update(offset: 0)
+        
+        navigationItem.rightBarButtonItem = info
+        UIView.animate(withDuration: 0.3.second, animations: { self.view.layoutSubviews() })
+        
+        /**
+         Gán giá trị
+         */
+        footerView.slider.setValue(Float(0), animated: true)
+        self.footerView.playState = .play
+        animationMoveMarkerToPosition(vehicleTrip.points[currentPosition].coordinate,
+                                      time: vehicleTrip.timeArray[currentPosition])
+        
+    }
 
-    }
-    
-    /**
-     Animation di chuyển marker
-     */
-    func animationMarkerMoveToPosition(_ positon: CLLocationCoordinate2D, duration: TimeInterval) {
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(duration)
-        carMarker.position = positon
-        CATransaction.commit()
-    }
-    
-    
-    func animationFloatView(_ visible: Bool) {
-        
-        if visible {
-            floatView.isHidden = false
-            floatViewLeadingConstraint.update(inset: 5)
-        } else {
-            floatViewLeadingConstraint.update(inset: -floatView.frame.width)
-        }
-        
-        UIView.animate(withDuration: 0.4.second, animations: {
-            self.view.layoutIfNeeded()
-            
-        }, completion: { _ in
-            if !visible { self.floatView.isHidden = true }
-        })
-        
-    }
-    
     
     func drawTracking(completion: (() -> Void)? = nil) {
         
@@ -334,6 +300,83 @@ extension TrackingViewController {
         }
     }
     
+    /// Vẽ Polyline trên Map
+    func drawPolyline(_ path: GMSPath) {
+        
+        polyline = GMSPolyline(path: path)
+        polyline?.strokeColor = UIColor(rgba: "#1E90FF")
+        polyline?.strokeWidth = 3
+        polyline?.map = mapView
+    }
+    
+    /// Animation di chuyển Marker
+    func animationMoveMarkerToPosition(_ position: CLLocationCoordinate2D, time: TimeInterval) {
+        
+        guard let tracking = tracking else { return }
+                
+        if carMarker == nil { setupCarMarker() }
+        
+        let duration = 1.second / footerView.playSpeed.multiplier
+        
+        carMarker?.animationMarkerMoveToPosition(position, duration: duration)
+        carMarker?.animationRotationWithDirection(tracking.directions[self.currentPosition].direction)
+        
+        if trackingWhileDraggingSlider {
+            animateOnMap(duration, mapView.animate(toLocation: position))
+        }
+        
+        guard case .play = self.footerView.playState else { return }
+        
+        Timer.after(duration) {_ in
+            
+            
+            guard let vehicleTrip = self.vehicleTrip else {
+                return
+            }
+            
+            guard self.currentPosition < vehicleTrip.points.count - 1 else {
+                self.footerView.playState = .pause
+                self.footerView.slider.value = Float(vehicleTrip.points.count)
+                self.currentPosition = vehicleTrip.points.count
+                return
+            }
+            
+            self.currentPosition += 1
+            self.footerView.slider.setValue(Float(self.currentPosition), animated: true)
+            guard case .play = self.footerView.playState else { return }
+            
+            self.animationMoveMarkerToPosition(vehicleTrip.points[self.currentPosition].coordinate,
+                                               time: vehicleTrip.timeArray[self.currentPosition])
+            self.floatView.info = vehicleTrip.points[self.currentPosition]
+            
+        }
+    }
+    
+    
+    // Theo dõi và bỏ theo dõi
+    func tracking(_ sender: MapButton) {
+        sender.isSelected = !sender.isSelected
+        trackingWhileDraggingSlider = !trackingWhileDraggingSlider
+    }
+    
+    fileprivate func animationFloatView(_ visible: Bool) {
+        
+        if visible {
+            floatView.isHidden = false
+            floatViewLeadingConstraint.update(offset: 5)
+        } else {
+            floatViewLeadingConstraint.update(offset: -floatView.frame.width)
+        }
+        
+        UIView.animate(withDuration: 0.4.second, animations: {
+            self.view.layoutSubviews()
+            
+        }, completion: { _ in
+            if !visible { self.floatView.isHidden = true }
+        })
+        
+    }
+    
 }
 
 //MARK: GOOGLEMAP DELEGATE
@@ -380,121 +423,41 @@ extension TrackingViewController: GMSMapViewDelegate {
     
 }
 
-//MARK: SETUP VIEW
-extension TrackingViewController {
-    
-    fileprivate func setupAllSubViews() {
-        
-        UIApplication.shared.statusBarStyle = .default
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.isTranslucent = false
-                
-        setupMapView()
-        setupBarButton()
-        setupMyLocation()
-        setupInfoWindow()
-        setupFloatView()
-        setupFooterView()
-        
-        
-        if let tracking = tracking {
-            title = tracking.name
-        }
-    }
-    
-    fileprivate func setupAllConstraints() {
-        
-        controlFooterView.snp.makeConstraints { (make) in
-            make.bottom.leading.trailing.equalTo(view)
-            make.height.equalTo(state == .normal ? 54 : 0)
-        }
-        
-        mapView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalTo(view)
-            make.bottom.equalTo(controlFooterView.snp.top)
-        }
-        
-        myLocation.snp.makeConstraints { (make) in
-            make.height.equalTo(Size.button..)
-            make.width.equalTo(Size.button..)
-            make.right.equalTo(view.snp.right).inset(Size.padding15..)
-            make.bottom.equalTo(controlFooterView.snp.top).offset(-Size.padding15..)
-        }
-        
-        floatView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.snp.top).inset(5)
-            floatViewLeadingConstraint = make.leading.equalTo(view.snp.leading).inset(5).constraint
-            floatViewWidthConstraint = make.width.equalTo(160).constraint
-            floatViewHeightConstraint = make.height.equalTo(85).constraint
-        }
-        
-    }
-    
-    fileprivate func setupMapView() {
-        mapView = GMSMapView()
-        mapView.delegate = self
-        mapView.settings.compassButton = true
-        mapView.isMyLocationEnabled = true
-        mapView.mapType = kGMSTypeNormal
-        
-        view.addSubview(mapView)
-    }
-    
-    fileprivate func setupBarButton() {
-        switch state {
-        case .normal:
-            let left = UIBarButtonItem(image: Icon.Nav.Back, style: .plain, target: self, action: #selector(self.back(_:)))
-            left.tintColor = .white
-            navigationItem.leftBarButtonItem = left
-            
-            info = UIBarButtonItem(image: Icon.Nav.info, style: .plain, target: self, action: #selector(self.info(_:)))
-            info.tintColor = .white
-            navigationItem.rightBarButtonItem = info
-            
-        case .tracking:
-            let left = UIBarButtonItem(image: Icon.Nav.Done, style: .plain, target: self, action: #selector(self.saveTracking(_:)))
-            left.tintColor = .white
-            navigationItem.leftBarButtonItem = left
-        }
-    }
-    
-    fileprivate func setupMyLocation() {
-        myLocation = MapButton()
-        myLocation.setImage(Icon.General.myLocation.tint(UIColor.main), for: UIControlState())
-        myLocation.addTarget(self, action: #selector(self.myLocation(_:)), for: .touchUpInside)
-        view.addSubview(myLocation)
-    }
-    
-    fileprivate func setupInfoWindow() {
-        infoWindow = TrackingMarkerInfoWindow()
-        infoWindow.frame = CGRect(x: 0, y: 0, width: 230, height: 65)
-    }
 
-    fileprivate func setupFloatView() {
-        floatView = TrackingFloatView()
-        view.addSubview(floatView)
-        
-        guard let tracking = tracking else { return }
-        
-        floatView.totalDistance = tracking.totalDistance
-        
-        floatView.info = VehicleTrip.PointInfo(index: 1,
-                                               coordinate: tracking.movements[0].coordinate,
-                                               time: tracking.convertToRealmType().time,
-                                               velocity: Int(tracking.velocityMedium),
-                                               velocityColor: LineSegment.Category.normal,
-                                               isStopPoint: false)
-        
-        floatView.labelTime.text = Utility.shared.stringMinuteFromTimeInterval(tracking.totalTime)
-        
+extension TrackingViewController: TrackingControlFooterViewDelegate {
+    func changedPlayState() {
+        switch footerView.playState {
+        case .play:
+            
+            guard let vehicleTrip = vehicleTrip else { return }
+            if currentPosition >= vehicleTrip.points.count {
+                currentPosition = 0
+                footerView.slider.value = 0
+                //                marker?.animationMarkerMoveToPosition(vehicleTrip.points[currentPosition].coordinate, duration: 0.second)
+                //                animateOnMap(0.second, mapView.animateToLocation(vehicleTrip.points[currentPosition].coordinate))
+                //                return
+            }
+            animationMoveMarkerToPosition(vehicleTrip.points[currentPosition].coordinate, time:  vehicleTrip.timeArray[currentPosition])
+        default:
+            break
+        }
     }
     
-    fileprivate func setupFooterView() {
-        controlFooterView = TrackingControlFooterView()
-        controlFooterView.buttonPlay.addTarget(self, action: #selector(self.playTracking(_:)), for: .touchUpInside)
-        view.addSubview(controlFooterView)
+    func sliderValueChangedManually(_ value: Int) {
+        
+        guard let vehicleTrip = vehicleTrip else { return }
+        guard value < vehicleTrip.points.count - 1 else {
+            footerView.playState = .pause
+            currentPosition = vehicleTrip.points.count - 1
+            return
+        }
+        
+        currentPosition = value
+        carMarker?.animationMarkerMoveToPosition(vehicleTrip.points[currentPosition].coordinate, duration: 0.second)
+        animateOnMap(0.second, mapView.animate(toLocation: vehicleTrip.points[currentPosition].coordinate))
+        floatView.info = vehicleTrip.points[currentPosition]
+        
     }
-    
 }
 
 

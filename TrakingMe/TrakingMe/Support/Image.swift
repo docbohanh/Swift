@@ -58,6 +58,7 @@ struct Icon {
         static var VehicleCar = UIImage(named: "VehicleCar")!
         static var Favorite = UIImage(named: "Favorite")!
         static var FavoriteFill = UIImage(named: "FavoriteFill")!
+        static var markerCenter = UIImage(named: "MarkerCenter")!
         
     }
     

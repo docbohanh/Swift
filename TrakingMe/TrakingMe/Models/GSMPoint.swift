@@ -1,13 +1,29 @@
 //
-//  TrackingGSMPoint.swift
+//  GSMPoint.swift
 //  TrakingMe
 //
-//  Created by Thành Lã on 1/6/17.
+//  Created by Thành Lã on 1/13/17.
 //  Copyright © 2017 Bình Anh Electonics. All rights reserved.
 //
 
 import Foundation
-import CoreLocation
+import GoogleMaps
+
+struct GSMPoint {
+    var startPoint: Int
+    var endPoint: Int
+    var startTime: Double
+    var duration: Int
+    
+    
+    init(startPoint: Int, endPoint: Int, startTime: Double, duration: Int) {
+        self.startPoint = startPoint
+        self.endPoint = endPoint
+        self.startTime = startTime
+        self.duration = duration
+    }
+}
+
 
 struct TrackingGSMPoint {
     let startIndex: Int

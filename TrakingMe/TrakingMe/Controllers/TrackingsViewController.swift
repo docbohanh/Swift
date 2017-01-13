@@ -384,7 +384,7 @@ extension TrackingsViewController {
                     $0.header = header
                 }
             
-            for (j, item) in dataArray[i].enumerated() {
+            for (_, item) in dataArray[i].enumerated() {
                 
                 let tracking = item.convertToSyncType()
                 

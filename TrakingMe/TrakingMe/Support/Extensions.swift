@@ -29,4 +29,8 @@ extension Double {
     var toKmh: Double {
         return self * 3.6
     }
+    
+    var toHours: Double {
+        return self / 3_600
+    }
 }

@@ -157,10 +157,10 @@ extension Tracking {
     }
     
     ///Tổng quãng đường di chuyển
-    var totalDistance: Double {
+    var totalKm: Double {
         return coupleMovement
             .map { GMSGeometryDistance($0.first.coordinate, $0.second.coordinate) }
-            .reduce(0, +)
+            .reduce(0, +) / 1_000
     }
     
     ///Vân tốc giữa hai movement
@@ -176,6 +176,16 @@ extension Tracking {
         return coupleMovement.map { velocity(between: $0.first, and: $0.second) }
     }
     
+    var velocityPoints: [VelocityPoint] {
+        var result = [VelocityPoint(index: 0, velocity: 0)]
+        
+        for (i, item) in velocitys.enumerated() {
+            result.append(VelocityPoint(index: i + 1, velocity: CGFloat(item)))
+        }
+        
+        return result
+    }
+    
     ///Vận tốc max
     var velocityMax: Double {
         
@@ -189,7 +199,7 @@ extension Tracking {
 //        let vCount = velocitys.count
 //        let vSum = velocitys.reduce(0, +)
 //        return vSum / Double(vCount)
-        return totalTime == 0 ? 0 : totalDistance * 3.6 / totalTime
+        return totalTime == 0 ? 0 : totalKm / totalTime.toHours
     }
     
     ///Mảng thời gian di chuyển giữa hai movement

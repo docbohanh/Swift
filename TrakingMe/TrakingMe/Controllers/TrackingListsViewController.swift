@@ -497,7 +497,10 @@ extension TrackingListsViewController: UITableViewDelegate {
         
         HUD.showHUD() {
             let trackingVC = TrackingViewController()
-            trackingVC.tracking = self.dataArray[indexPath.section][indexPath.row].convertToSyncType()
+            let tracker = self.dataArray[indexPath.section][indexPath.row].convertToSyncType()
+            trackingVC.tracking = tracker
+            trackingVC.vehicleTrip = VehicleTrip(info: TrackingInfo(tracking: tracker))
+            trackingVC.vehicleOnline = VehicleOnline(tracking: tracker)
             self.navigationController?.pushViewController(trackingVC, animated: true)
             HUD.dismissHUD()
             
@@ -624,7 +627,7 @@ extension TrackingListsViewController {
     
     fileprivate func setupAllSubviews() {
         title = "Danh sách lộ trình"
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.groupTableViewBackground
         
         setupBarButton()
         
@@ -655,7 +658,7 @@ extension TrackingListsViewController {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = UIColor.white
+        tableView.backgroundColor = UIColor.groupTableViewBackground
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = dataArray.count > 0
         tableView.register(TrackingTableViewCell.self, forCellReuseIdentifier: cellIdentifier)

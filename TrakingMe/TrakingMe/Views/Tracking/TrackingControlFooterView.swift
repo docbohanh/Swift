@@ -10,6 +10,11 @@ import UIKit
 import PHExtensions
 import RxSwift
 
+protocol TrackingControlFooterViewDelegate: class {
+    func sliderValueChangedManually(_ value: Int)
+    func changedPlayState()
+}
+
 class TrackingControlFooterView: UIView {
     
     
@@ -44,17 +49,24 @@ class TrackingControlFooterView: UIView {
     
     fileprivate var seperator: UIView!
     
-    var rx_playSpeed = Variable<PlaySpeed>(.speed2X)
+    weak var delegate: TrackingControlFooterViewDelegate?
     
-    var rx_playState = Variable<PlayState>(.pause)
+    var playSpeed: PlaySpeed = .speed2X
     
-    var rx_sliderCount = Variable<Int>(0)
+    var playState: PlayState = .pause {
+        didSet {
+            buttonPlay.setImage(playState.getImageForState(), for: UIControlState())
+            delegate?.changedPlayState()
+        }
+    }
     
-    var rx_sliderValue = Variable<Int>(0)
+    var sliderCount: Int = 10 {
+        didSet {
+            slider.maximumValue = Float(sliderCount)
+        }
+    }
     
-    var rx_sliderValueChangedManually = PublishSubject<Int>()
-    
-    fileprivate let bag = DisposeBag()
+    var sliderValue: Int = 0
     
     var slider: UISlider!
     var buttonPlay: ButtonBorder!
@@ -98,83 +110,125 @@ class TrackingControlFooterView: UIView {
 
 extension TrackingControlFooterView {
     
-    func rx_setup() {
+    func buttonPlay(_ sender: UIButton) {
         
-        rx_sliderCount.asObservable()
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] in
-                self.slider.minimumValue = 0
-                self.slider.maximumValue = Float($0)
-                self.rx_sliderValue.value = 0
-            })
-            .addDisposableTo(bag)
-    
-        
-        slider.rx.value
-            .map { Int(floor($0)) }
-            .bindTo(rx_sliderValueChangedManually)
-            .addDisposableTo(bag)
-        
-        rx_sliderValue
-            .asObservable()
-            .subscribe(onNext: { [unowned self] in
-                self.slider.setValue(Float($0), animated: true)
-            })
-            .addDisposableTo(bag)
-        
-        buttonSpeed.rx.tap
-            .asObservable()
-            .map { [unowned self] in self.rx_playSpeed.value }
-            .map { x -> PlaySpeed in
-                switch x {
-                case .speed1X: return .speed2X
-                case .speed2X: return .speed4X
-                case .speed4X: return .speed8X
-                case .speed8X: return .speed1X
-                }
-            }
-            .subscribe(onNext: { self.rx_playSpeed.value = $0
-                self.buttonSpeed.setTitle("\($0.rawValue)x", for: UIControlState())
-            })
-            .addDisposableTo(bag)
-        
-        buttonPlay.rx.tap
-            .map { [unowned self] in self.rx_playState.value }
-            .map { x -> PlayState in
-                switch x {
-                case .play: return .pause
-                case .pause: return .play
-                }
-            }
-            .bindTo(rx_playState)
-            .addDisposableTo(bag)
+        switch playState {
+        case .play:
+            playState = .pause
+        case .pause:
+            playState = .play
+        }
         
         
-        rx_playState
-            .asObservable()
-            .map { $0.getImageForState() }
-            .subscribe(onNext: { [unowned self] in
-                self.buttonPlay.setImage($0, for: UIControlState())
-            })
-            .addDisposableTo(bag)
     }
+    
+    
+    func buttonSpeed(_ sender: UIButton) {
+        switch playSpeed {
+        case .speed1X:
+            playSpeed = .speed2X
+            
+        case .speed2X:
+            playSpeed = .speed4X
+            
+        case .speed4X:
+            playSpeed = .speed8X
+            
+        case .speed8X:
+            playSpeed = .speed1X
+        }
+        
+        buttonSpeed.setTitle("\(playSpeed..)x", for: UIControlState())
+    }
+    
+    func sliderChangeValue(_ sender: UISlider) {
+        
+        guard sliderValue != Int(sender.value) else { return }
+        sliderValue = Int(sender.value)
+        delegate?.sliderValueChangedManually(sliderValue)
+        
+    }
+    
+    
+    
+    //    func rx_setup() {
+    //
+    //        rx_sliderCount.asObservable()
+    //            .observeOn(MainScheduler.instance)
+    //            .subscribeNext { [unowned self] in
+    //                self.slider.minimumValue = 0
+    //                self.slider.maximumValue = Float($0)
+    //                self.rx_sliderValue.value = 0
+    //            }
+    //            .addDisposableTo(bag)
+    //
+    //        slider.rx_value
+    //            .map { Int(floor($0)) }
+    //            .bindTo(rx_sliderValueChangedManually)
+    //            .addDisposableTo(bag)
+    //
+    //        rx_sliderValue
+    //            .asObservable()
+    //            .subscribeNext { [unowned self] in
+    //                self.slider.setValue(Float($0), animated: true)
+    //            }
+    //            .addDisposableTo(bag)
+    //
+    //        buttonSpeed.rx_tap
+    //            .asObservable()
+    //            .map { [unowned self] in self.rx_playSpeed.value }
+    //            .map { x -> PlaySpeed in
+    //                switch x {
+    //                case .Speed1X: return .Speed2X
+    //                case .Speed2X: return .Speed4X
+    //                case .Speed4X: return .Speed8X
+    //                case .Speed8X: return .Speed1X
+    //                }
+    //            }
+    //            .subscribeNext { [unowned self] in
+    //                self.rx_playSpeed.value = $0
+    //                self.buttonSpeed.setTitle("\($0.rawValue)x", forState: .Normal)
+    //            }
+    //            .addDisposableTo(bag)
+    //
+    //        buttonPlay.rx_tap
+    //            .map { [unowned self] in self.rx_playState.value }
+    //            .map { x -> PlayState in
+    //                switch x {
+    //                case .Play: return .Pause
+    //                case .Pause: return .Play
+    //                }
+    //            }
+    //            .bindTo(rx_playState)
+    //            .addDisposableTo(bag)
+    //
+    //        rx_playState
+    //            .asObservable()
+    //            .map { $0.getImageForState() }
+    //            .subscribeNext { [unowned self] in
+    //                self.buttonPlay.setImage($0, forState: .Normal)
+    //            }
+    //            .addDisposableTo(bag)
+    //    }
     
     func setup() {
         seperator = setupSeperator()
         buttonPlay = setupButtonPlay()
         slider = setupSlider()
         
-        buttonSpeed = setupButton(UIColor.white,
-                                  title: "\(rx_playSpeed.value.rawValue)x",
-                                  alignment: .center,
-                                  font: UIFont(name: FontType.latoBold.., size: FontSize.large--)!)
+        buttonSpeed = setupButton(
+            UIColor.white,
+            title: "\(playSpeed..)x",
+            alignment: .center,
+            font: UIFont(name: FontType.latoBold.., size: FontSize.large--)!)
         
-        rx_setup()
+        buttonSpeed.addTarget(self, action: #selector(self.buttonSpeed(_:)), for: .touchUpInside)
+        
         
         addSubview(buttonPlay)
         addSubview(slider)
         addSubview(buttonSpeed)
-//        addSubview(seperator)
+        //        addSubview(seperator)
         
         layer.shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
         layer.shadowOpacity = 0.3
@@ -185,27 +239,32 @@ extension TrackingControlFooterView {
     }
     
     fileprivate func setupButton(_ titleColor: UIColor = UIColor.main,
-                             title: String,
-                             alignment: UIControlContentHorizontalAlignment = .center,
-                             font: UIFont = UIFont(name: FontType.latoRegular.., size: FontSize.normal..)!) -> ButtonBorder {
+                                 title: String,
+                                 alignment: UIControlContentHorizontalAlignment = .center,
+                                 font: UIFont = UIFont(name: FontType.latoRegular.., size: FontSize.normal..)!) -> ButtonBorder {
         
         let button = ButtonBorder()
         button.setTitle(title, for: UIControlState())
         button.setTitleColor(titleColor, for: UIControlState())
         button.titleLabel?.font = font
         button.contentHorizontalAlignment = alignment
+        
         return button
     }
     
     fileprivate func setupSlider() -> UISlider {
         let slider = UISlider()
         slider.minimumTrackTintColor = UIColor.white
+        slider.maximumValue = Float(sliderCount)
+        slider.value = Float(sliderValue)
+        slider.addTarget(self, action: #selector(self.sliderChangeValue(_:)), for: .valueChanged)
         return slider
     }
     
     fileprivate func setupButtonPlay() -> ButtonBorder {
         let button = ButtonBorder()
-        button.setImage(rx_playState.value.getImageForState(), for: UIControlState())
+        button.setImage(playState.getImageForState(), for: UIControlState())
+        button.addTarget(self, action: #selector(self.buttonPlay(_:)), for: .touchUpInside)
         button.contentMode = .scaleAspectFill
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return button
@@ -216,7 +275,7 @@ extension TrackingControlFooterView {
         view.backgroundColor = UIColor.lightGray
         return view
     }
-
+    
     
     func viewHeight() -> CGFloat {
         return Size.padding7.. + Size.button.. + Size.padding7..
@@ -246,7 +305,7 @@ class ButtonBorder: UIButton {
         windows.lineWidth = onePixel() * 2
         UIColor.white.setStroke()
         windows.stroke()
-
+        
         super.draw(rect)
     }
 }
