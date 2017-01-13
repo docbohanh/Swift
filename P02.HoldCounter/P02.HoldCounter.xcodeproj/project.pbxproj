@@ -436,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC09DCAE225BECDD93FA8482 /* Pods-P02.HoldCounter.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
 				INFOPLIST_FILE = P02.HoldCounter/Info.plist;
@@ -451,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DE55AF420B40705128ACE8DA /* Pods-P02.HoldCounter.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
 				INFOPLIST_FILE = P02.HoldCounter/Info.plist;

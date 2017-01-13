@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'TrackingMe' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TrackingMe
+  pod 'GoogleMaps'
+
+  target 'TrackingMeTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'TrackingMeUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
