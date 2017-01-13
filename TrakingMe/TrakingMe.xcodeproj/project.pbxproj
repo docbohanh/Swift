@@ -35,6 +35,7 @@
 		136384291E287E1300609C64 /* GSMPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136384281E287E1300609C64 /* GSMPoint.swift */; };
 		1363842B1E287EDE00609C64 /* VehicleTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363842A1E287EDE00609C64 /* VehicleTrip.swift */; };
 		1363842D1E28B8F800609C64 /* TrackingViewController+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363842C1E28B8F800609C64 /* TrackingViewController+Setup.swift */; };
+		1363842F1E28D5D300609C64 /* TrackingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363842E1E28D5D300609C64 /* TrackingsViewController.swift */; };
 		1392DE411E16B22800ED5757 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1392DE401E16B22800ED5757 /* AppDelegate.swift */; };
 		1392DE461E16B22900ED5757 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1392DE441E16B22900ED5757 /* Main.storyboard */; };
 		1392DE481E16B22900ED5757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1392DE471E16B22900ED5757 /* Assets.xcassets */; };
@@ -153,6 +154,7 @@
 		136384281E287E1300609C64 /* GSMPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSMPoint.swift; sourceTree = "<group>"; };
 		1363842A1E287EDE00609C64 /* VehicleTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleTrip.swift; sourceTree = "<group>"; };
 		1363842C1E28B8F800609C64 /* TrackingViewController+Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrackingViewController+Setup.swift"; sourceTree = "<group>"; };
+		1363842E1E28D5D300609C64 /* TrackingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingsViewController.swift; sourceTree = "<group>"; };
 		1392DE3D1E16B22800ED5757 /* TrakingMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrakingMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1392DE401E16B22800ED5757 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1392DE451E16B22900ED5757 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				1392DE861E16B3FD00ED5757 /* TrackingViewController.swift */,
 				1363842C1E28B8F800609C64 /* TrackingViewController+Setup.swift */,
 				134846BD1E1F7FEF008177E4 /* TrackingViewController+Rx.swift */,
+				1363842E1E28D5D300609C64 /* TrackingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				1392DEB41E16CBFF00ED5757 /* HUD.swift in Sources */,
 				1348469B1E1F5329008177E4 /* TrackingInfo.swift in Sources */,
 				134846881E1F4FA9008177E4 /* CenterView.swift in Sources */,
+				1363842F1E28D5D300609C64 /* TrackingsViewController.swift in Sources */,
 				1392DE621E16B35700ED5757 /* Color.swift in Sources */,
 				1392DEBD1E16D8E700ED5757 /* TrackingPolyline.swift in Sources */,
 				13A0390F1E1F8CE100F80C6D /* GMSMapView+Rx.swift in Sources */,

@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let GMSServiceKey = "AIzaSyDGP7n2-4MKQjQ6ucNROKPDrjvWLM5etfo"
         GMSServices.provideAPIKey(GMSServiceKey)
         
-        let trackingsVC = TrackingListsViewController()
+        let trackingsVC = TrackingsViewController()
         let navigationController = setupNavigationController(withRoot: trackingsVC)
         
         if let window = window {

@@ -448,7 +448,7 @@ extension TrackingListsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return dataArray.count > 0
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -630,6 +630,7 @@ extension TrackingListsViewController {
         view.backgroundColor = UIColor.groupTableViewBackground
         
         setupBarButton()
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
         
         tableView = setupTableView()
         view.addSubview(tableView)

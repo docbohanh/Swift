@@ -384,17 +384,38 @@ extension TrackingsViewController {
                     $0.header = header
                 }
             
-            for (_, item) in dataArray[i].enumerated() {
+            for (j, track) in dataArray[i].enumerated() {
                 
-                let tracking = item.convertToSyncType()
+                let tracking = track.convertToSyncType()
                 
-                let row = NameRow() {
-                        $0.title = tracking.name
-                        $0.placeholder = tracking.id
+//                let row = NameRow() {
+//                        $0.title = tracking.name
+//                        $0.placeholder = tracking.id
+//                    }
+//                    .cellSetup { cell, row in
+//                        cell.imageView?.image = Icon.Tracking.map
+//                    }
+                
+                let row = ButtonRow() { (row: ButtonRow) -> Void in
+                    
+                    row.title = tracking.name
+                    row.tag = String(j)
                     }
-                    .cellSetup { cell, row in
-                        cell.imageView?.image = Icon.Tracking.map
-                    }
+                    .onCellSelection { [unowned self] (cell, row) in
+                        
+                        guard let str = row.tag, let aRow = Int(str) else { return }
+                        print("aRow: \(aRow)")
+                        
+                        HUD.showHUD() {
+                            let trackingVC = TrackingViewController()
+                            trackingVC.tracking = tracking
+                            trackingVC.vehicleTrip = VehicleTrip(info: TrackingInfo(tracking: tracking))
+                            trackingVC.vehicleOnline = VehicleOnline(tracking: tracking)
+                            self.navigationController?.pushViewController(trackingVC, animated: true)
+                            HUD.dismissHUD()
+                            
+                        }
+                }
                 
                 section.append(row)
             }

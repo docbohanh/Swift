@@ -63,6 +63,8 @@ class TrackingViewController: GeneralViewController {
     
     var state: State = .normal
     
+    var timer = Timer()
+    
     enum State {
         case normal
         case tracking
@@ -145,7 +147,9 @@ extension TrackingViewController {
     }
     
     func back(_ sender: UIBarButtonItem) {
+        
         _ = navigationController?.popViewController(animated: true)
+        return
     }
     
     func myLocation(_ sender: MapButton) {
@@ -225,6 +229,49 @@ extension TrackingViewController {
         animationMoveMarkerToPosition(vehicleTrip.points[currentPosition].coordinate,
                                       time: vehicleTrip.timeArray[currentPosition])
         
+    }
+
+    /// Animation di chuyển Marker
+    func animationMoveMarkerToPosition(_ position: CLLocationCoordinate2D, time: TimeInterval) {
+        
+        guard let tracking = tracking else { return }
+        
+        if carMarker == nil { setupCarMarker() }
+        
+        let duration = 1.second / footerView.playSpeed.multiplier
+        
+        carMarker?.animationMarkerMoveToPosition(position, duration: duration)
+        carMarker?.animationRotationWithDirection(tracking.directions[self.currentPosition].direction)
+        
+        if trackingWhileDraggingSlider {
+            animateOnMap(duration, mapView.animate(toLocation: position))
+        }
+        
+        guard case .play = self.footerView.playState else { return }
+        
+        Timer.after(duration) { _ in
+            
+            
+            guard let vehicleTrip = self.vehicleTrip else {
+                return
+            }
+            
+            guard self.currentPosition < vehicleTrip.points.count - 1 else {
+                self.footerView.playState = .pause
+                self.footerView.slider.value = Float(vehicleTrip.points.count)
+                self.currentPosition = vehicleTrip.points.count
+                return
+            }
+            
+            self.currentPosition += 1
+            self.footerView.slider.setValue(Float(self.currentPosition), animated: true)
+            guard case .play = self.footerView.playState else { return }
+            
+            self.animationMoveMarkerToPosition(vehicleTrip.points[self.currentPosition].coordinate,
+                                               time: vehicleTrip.timeArray[self.currentPosition])
+            self.floatView.info = vehicleTrip.points[self.currentPosition]
+            
+        }
     }
 
     
@@ -309,48 +356,6 @@ extension TrackingViewController {
         polyline?.map = mapView
     }
     
-    /// Animation di chuyển Marker
-    func animationMoveMarkerToPosition(_ position: CLLocationCoordinate2D, time: TimeInterval) {
-        
-        guard let tracking = tracking else { return }
-                
-        if carMarker == nil { setupCarMarker() }
-        
-        let duration = 1.second / footerView.playSpeed.multiplier
-        
-        carMarker?.animationMarkerMoveToPosition(position, duration: duration)
-        carMarker?.animationRotationWithDirection(tracking.directions[self.currentPosition].direction)
-        
-        if trackingWhileDraggingSlider {
-            animateOnMap(duration, mapView.animate(toLocation: position))
-        }
-        
-        guard case .play = self.footerView.playState else { return }
-        
-        Timer.after(duration) {_ in
-            
-            
-            guard let vehicleTrip = self.vehicleTrip else {
-                return
-            }
-            
-            guard self.currentPosition < vehicleTrip.points.count - 1 else {
-                self.footerView.playState = .pause
-                self.footerView.slider.value = Float(vehicleTrip.points.count)
-                self.currentPosition = vehicleTrip.points.count
-                return
-            }
-            
-            self.currentPosition += 1
-            self.footerView.slider.setValue(Float(self.currentPosition), animated: true)
-            guard case .play = self.footerView.playState else { return }
-            
-            self.animationMoveMarkerToPosition(vehicleTrip.points[self.currentPosition].coordinate,
-                                               time: vehicleTrip.timeArray[self.currentPosition])
-            self.floatView.info = vehicleTrip.points[self.currentPosition]
-            
-        }
-    }
     
     
     // Theo dõi và bỏ theo dõi

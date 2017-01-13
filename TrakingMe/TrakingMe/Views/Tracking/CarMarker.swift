@@ -101,7 +101,7 @@ class CarMarker: GMSMarker {
         
         let view = CarMarkerView(frame: CGRect(x: 0, y: 0, width: width, height: Size.height..))
         view.label.text = plate.uppercased()
-        view.image.image = UIImage(named: "motorcycle_blue_0")
+        view.image.image = UIImage(named: "car_blue_0")
         return view
     }
     
@@ -110,7 +110,11 @@ class CarMarker: GMSMarker {
      */
     func animationRotationWithDirection(_ direction: CLLocationDegrees) {
         UIView.animate(withDuration: durationRotation, animations: { _ in
-            self.craMarkerView.image.transform = CGAffineTransform(rotationAngle: CGFloat(direction) / 180 * CGFloat(M_PI))
+//            let rotate = CGFloat(direction) / 180 * CGFloat(M_PI)
+//            print("rotate: \(rotate)")
+//            self.craMarkerView.image.transform = CGAffineTransform(rotationAngle: rotate)
+            print("direction: \(direction)")
+            self.rotation = direction
         })
     }
     
@@ -164,7 +168,7 @@ private class CarMarkerView: UIView {
         label = setupLabel()
         image = setupImageView()
         
-        addSubview(label)
+//        addSubview(label)
         addSubview(image)
     }
     
