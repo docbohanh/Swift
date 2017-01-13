@@ -46,7 +46,7 @@ class EmptyTableViewCell: UITableViewCell {
         }
         
         imageView.frame = CGRect(x: (bounds.width - Size.image.. ) / 2,
-                                 y: bounds.height / 2 - Size.image.. - Size.padding15.. * 2,
+                                 y: bounds.height / 3 - Size.image.. - Size.padding15.. * 2,
                                  width: Size.image..,
                                  height: Size.image..)
         

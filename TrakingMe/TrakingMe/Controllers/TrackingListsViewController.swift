@@ -19,7 +19,7 @@ class TrackingListsViewController: GeneralViewController {
      Enum xác định các Size
      */
     enum Size: CGFloat {
-        case padding = 15, button = 44, cell = 54
+        case padding15 = 15, button = 44, cell = 54
     }
     
     let cellIdentifier = "cell"
@@ -368,11 +368,11 @@ extension TrackingListsViewController: TrackingViewControllerDelegate {
 extension TrackingListsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataArray.count
+        return dataArray.count == 0 ? 1 : dataArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleSections[section].visible ? dataArray[section].count : 0
+        return dataArray.count == 0 ? 1 : (titleSections[section].visible ? dataArray[section].count : 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -391,7 +391,7 @@ extension TrackingListsViewController: UITableViewDataSource {
     func configureEmptyCell(cell: EmptyTableViewCell, atIndexPath indexPath: IndexPath) {
         
         cell.imageView?.image = Icon.Tracking.empty.tint(UIColor.lightGray)
-        cell.textLabel?.text = "Hiện tại chưa có lộ trình nào được lưu"
+        cell.textLabel?.text = "Hiện tại chưa có lộ trình nào được lưu!"
         cell.selectionStyle = .none
     }
     
@@ -638,7 +638,8 @@ extension TrackingListsViewController {
     
     fileprivate func setupAllConstraints() {
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.bottom.leading.trailing.equalTo(view)
+            make.top.equalTo(view.snp.top).inset(Size.padding15..)
         }
     }
     
@@ -669,11 +670,17 @@ extension TrackingListsViewController {
     fileprivate func setupHeaderViewSection(section: Int) -> UIView {
         
         let headerView = HeaderTableView()
-        headerView.title.text = titleSections[section].title
+        headerView.title.text = titleSections.count > 0 ? titleSections[section].title : ""
         headerView.backgroundColor = UIColor.groupTableViewBackground
         headerView.tag = section
         
         headerView.arrow.isHidden = false
+        guard titleSections.count > 0 else {
+            headerView.arrow.alpha = 0
+            headerView.seperator.alpha = 0
+            return headerView
+        }
+        
         if titleSections[section].visible {
             headerView.arrow.transform = CGAffineTransform.identity
         } else {
