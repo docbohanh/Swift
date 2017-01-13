@@ -120,9 +120,11 @@ extension TrackingViewController {
     
     
     func setupCarMarker() {
+        guard let tracking = tracking else { return }
         carMarker = CarMarker(info: vehicleOnline)
+        carMarker?.rotation = tracking.directions[0].direction
         carMarker?.map = mapView
-        carMarker?.zIndex = 1
+        carMarker?.zIndex = 1000
     }
     
     
