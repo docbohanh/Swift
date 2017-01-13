@@ -652,7 +652,7 @@ extension TrackingListsViewController {
     
     fileprivate func setupTableView() -> UITableView {
         
-        let tableView = UITableView()
+        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.white
