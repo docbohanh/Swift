@@ -14,6 +14,46 @@
 		13665A771E285CF80054BAF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13665A751E285CF80054BAF4 /* LaunchScreen.storyboard */; };
 		13665A821E285CF80054BAF4 /* TrackingMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665A811E285CF80054BAF4 /* TrackingMeTests.swift */; };
 		13665A8D1E285CF80054BAF4 /* TrackingMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665A8C1E285CF80054BAF4 /* TrackingMeUITests.swift */; };
+		13665AE11E28600D0054BAF4 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665A9C1E28600D0054BAF4 /* GeneralViewController.swift */; };
+		13665AE21E28600D0054BAF4 /* TrackingListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665A9D1E28600D0054BAF4 /* TrackingListsViewController.swift */; };
+		13665AE31E28600D0054BAF4 /* TrackingViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665A9E1E28600D0054BAF4 /* TrackingViewController+Rx.swift */; };
+		13665AE41E28600D0054BAF4 /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665A9F1E28600D0054BAF4 /* TrackingViewController.swift */; };
+		13665AE51E28600D0054BAF4 /* RealmTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AA11E28600D0054BAF4 /* RealmTracking.swift */; };
+		13665AE61E28600D0054BAF4 /* DirectionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AA31E28600D0054BAF4 /* DirectionPoint.swift */; };
+		13665AE71E28600D0054BAF4 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AA41E28600D0054BAF4 /* Tracking.swift */; };
+		13665AE81E28600D0054BAF4 /* TrackingPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AA51E28600D0054BAF4 /* TrackingPolyline.swift */; };
+		13665AE91E28600D0054BAF4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AA71E28600D0054BAF4 /* Color.swift */; };
+		13665AEA1E28600D0054BAF4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AA81E28600D0054BAF4 /* Constants.swift */; };
+		13665AEB1E28600D0054BAF4 /* DatabaseSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AA91E28600D0054BAF4 /* DatabaseSupport.swift */; };
+		13665AEF1E28600D0054BAF4 /* Realm+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AAE1E28600D0054BAF4 /* Realm+Ex.swift */; };
+		13665AF21E28600D0054BAF4 /* RealmObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AB41E28600D0054BAF4 /* RealmObserver.swift */; };
+		13665AF31E28600D0054BAF4 /* RxRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AB51E28600D0054BAF4 /* RxRealm.swift */; };
+		13665AFB1E28600D0054BAF4 /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AC01E28600D0054BAF4 /* CLLocationManager+Rx.swift */; };
+		13665AFC1E28600D0054BAF4 /* RxCLLocationManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AC11E28600D0054BAF4 /* RxCLLocationManagerDelegateProxy.swift */; };
+		13665AFD1E28600D0054BAF4 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AC21E28600D0054BAF4 /* String+Ex.swift */; };
+		13665AFF1E28600D0054BAF4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AC41E28600D0054BAF4 /* Extensions.swift */; };
+		13665B001E28600D0054BAF4 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AC51E28600D0054BAF4 /* HUD.swift */; };
+		13665B011E28600D0054BAF4 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AC61E28600D0054BAF4 /* Image.swift */; };
+		13665B021E28600D0054BAF4 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13665AC81E28600D0054BAF4 /* Lato-BlackItalic.ttf */; };
+		13665B031E28600D0054BAF4 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13665AC91E28600D0054BAF4 /* Lato-Bold.ttf */; };
+		13665B041E28600D0054BAF4 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13665ACA1E28600D0054BAF4 /* Lato-Italic.ttf */; };
+		13665B051E28600D0054BAF4 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13665ACB1E28600D0054BAF4 /* Lato-Light.ttf */; };
+		13665B061E28600D0054BAF4 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13665ACC1E28600D0054BAF4 /* Lato-Medium.ttf */; };
+		13665B071E28600D0054BAF4 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13665ACD1E28600D0054BAF4 /* Lato-Regular.ttf */; };
+		13665B081E28600D0054BAF4 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13665ACE1E28600D0054BAF4 /* Lato-Semibold.ttf */; };
+		13665B091E28600D0054BAF4 /* LocationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665ACF1E28600D0054BAF4 /* LocationSupport.swift */; };
+		13665B0A1E28600D0054BAF4 /* LoggerSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AD01E28600D0054BAF4 /* LoggerSupport.swift */; };
+		13665B0B1E28600D0054BAF4 /* GMSMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AD31E28600D0054BAF4 /* GMSMapView+Rx.swift */; };
+		13665B0C1E28600D0054BAF4 /* RxGMSMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AD41E28600D0054BAF4 /* RxGMSMapViewDelegateProxy.swift */; };
+		13665B0D1E28600D0054BAF4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AD51E28600D0054BAF4 /* Utility.swift */; };
+		13665B0E1E28600D0054BAF4 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AD81E28600D0054BAF4 /* EmptyTableViewCell.swift */; };
+		13665B0F1E28600D0054BAF4 /* HeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AD91E28600D0054BAF4 /* HeaderTableView.swift */; };
+		13665B101E28600D0054BAF4 /* SeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665ADA1E28600D0054BAF4 /* SeparatorTableViewCell.swift */; };
+		13665B111E28600D0054BAF4 /* TitleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665ADB1E28600D0054BAF4 /* TitleSection.swift */; };
+		13665B121E28600D0054BAF4 /* TrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665ADC1E28600D0054BAF4 /* TrackingTableViewCell.swift */; };
+		13665B131E28600D0054BAF4 /* TrackingControlFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665ADE1E28600D0054BAF4 /* TrackingControlFooterView.swift */; };
+		13665B141E28600D0054BAF4 /* TrackingFloatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665ADF1E28600D0054BAF4 /* TrackingFloatView.swift */; };
+		13665B151E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AE01E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift */; };
 		4D6889F11327E654B305A944 /* Pods_TrackingMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090D9477D51A1B36E405EE2F /* Pods_TrackingMe.framework */; };
 		674CC307198381590A33396A /* Pods_TrackingMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C790765D955E1D58FC704408 /* Pods_TrackingMeTests.framework */; };
 		F3D468462706C343077C0D71 /* Pods_TrackingMeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338010F6C509F4E0C259F03E /* Pods_TrackingMeUITests.framework */; };
@@ -51,6 +91,46 @@
 		13665A881E285CF80054BAF4 /* TrackingMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackingMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13665A8C1E285CF80054BAF4 /* TrackingMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingMeUITests.swift; sourceTree = "<group>"; };
 		13665A8E1E285CF80054BAF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13665A9C1E28600D0054BAF4 /* GeneralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		13665A9D1E28600D0054BAF4 /* TrackingListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingListsViewController.swift; sourceTree = "<group>"; };
+		13665A9E1E28600D0054BAF4 /* TrackingViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrackingViewController+Rx.swift"; sourceTree = "<group>"; };
+		13665A9F1E28600D0054BAF4 /* TrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingViewController.swift; sourceTree = "<group>"; };
+		13665AA11E28600D0054BAF4 /* RealmTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTracking.swift; sourceTree = "<group>"; };
+		13665AA31E28600D0054BAF4 /* DirectionPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionPoint.swift; sourceTree = "<group>"; };
+		13665AA41E28600D0054BAF4 /* Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
+		13665AA51E28600D0054BAF4 /* TrackingPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingPolyline.swift; sourceTree = "<group>"; };
+		13665AA71E28600D0054BAF4 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		13665AA81E28600D0054BAF4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		13665AA91E28600D0054BAF4 /* DatabaseSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseSupport.swift; sourceTree = "<group>"; };
+		13665AAE1E28600D0054BAF4 /* Realm+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Ex.swift"; sourceTree = "<group>"; };
+		13665AB41E28600D0054BAF4 /* RealmObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmObserver.swift; sourceTree = "<group>"; };
+		13665AB51E28600D0054BAF4 /* RxRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxRealm.swift; sourceTree = "<group>"; };
+		13665AC01E28600D0054BAF4 /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
+		13665AC11E28600D0054BAF4 /* RxCLLocationManagerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCLLocationManagerDelegateProxy.swift; sourceTree = "<group>"; };
+		13665AC21E28600D0054BAF4 /* String+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
+		13665AC41E28600D0054BAF4 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		13665AC51E28600D0054BAF4 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		13665AC61E28600D0054BAF4 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		13665AC81E28600D0054BAF4 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		13665AC91E28600D0054BAF4 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		13665ACA1E28600D0054BAF4 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		13665ACB1E28600D0054BAF4 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		13665ACC1E28600D0054BAF4 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		13665ACD1E28600D0054BAF4 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		13665ACE1E28600D0054BAF4 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		13665ACF1E28600D0054BAF4 /* LocationSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSupport.swift; sourceTree = "<group>"; };
+		13665AD01E28600D0054BAF4 /* LoggerSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerSupport.swift; sourceTree = "<group>"; };
+		13665AD31E28600D0054BAF4 /* GMSMapView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GMSMapView+Rx.swift"; sourceTree = "<group>"; };
+		13665AD41E28600D0054BAF4 /* RxGMSMapViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapViewDelegateProxy.swift; sourceTree = "<group>"; };
+		13665AD51E28600D0054BAF4 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		13665AD81E28600D0054BAF4 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
+		13665AD91E28600D0054BAF4 /* HeaderTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableView.swift; sourceTree = "<group>"; };
+		13665ADA1E28600D0054BAF4 /* SeparatorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorTableViewCell.swift; sourceTree = "<group>"; };
+		13665ADB1E28600D0054BAF4 /* TitleSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleSection.swift; sourceTree = "<group>"; };
+		13665ADC1E28600D0054BAF4 /* TrackingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingTableViewCell.swift; sourceTree = "<group>"; };
+		13665ADE1E28600D0054BAF4 /* TrackingControlFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingControlFooterView.swift; sourceTree = "<group>"; };
+		13665ADF1E28600D0054BAF4 /* TrackingFloatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingFloatView.swift; sourceTree = "<group>"; };
+		13665AE01E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingMarkerInfoWindow.swift; sourceTree = "<group>"; };
 		338010F6C509F4E0C259F03E /* Pods_TrackingMeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackingMeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A461BD7EFAEC5B560E2E86B /* Pods-TrackingMeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackingMeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrackingMeUITests/Pods-TrackingMeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6587B65E8667601E24243B52 /* Pods-TrackingMeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackingMeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrackingMeUITests/Pods-TrackingMeUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +194,11 @@
 		13665A6B1E285CF80054BAF4 /* TrackingMe */ = {
 			isa = PBXGroup;
 			children = (
+				13665AA01E28600D0054BAF4 /* Database */,
+				13665A9A1E28600D0054BAF4 /* Controllers */,
+				13665AA21E28600D0054BAF4 /* Model */,
+				13665AA61E28600D0054BAF4 /* Supports */,
+				13665AD61E28600D0054BAF4 /* Views */,
 				13665A6C1E285CF80054BAF4 /* AppDelegate.swift */,
 				13665A6E1E285CF80054BAF4 /* ViewController.swift */,
 				13665A701E285CF80054BAF4 /* Main.storyboard */,
@@ -140,6 +225,161 @@
 				13665A8E1E285CF80054BAF4 /* Info.plist */,
 			);
 			path = TrackingMeUITests;
+			sourceTree = "<group>";
+		};
+		13665A9A1E28600D0054BAF4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				13665A9B1E28600D0054BAF4 /* General */,
+				13665A9D1E28600D0054BAF4 /* TrackingListsViewController.swift */,
+				13665A9E1E28600D0054BAF4 /* TrackingViewController+Rx.swift */,
+				13665A9F1E28600D0054BAF4 /* TrackingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		13665A9B1E28600D0054BAF4 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				13665A9C1E28600D0054BAF4 /* GeneralViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		13665AA01E28600D0054BAF4 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				13665AA11E28600D0054BAF4 /* RealmTracking.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		13665AA21E28600D0054BAF4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				13665AA31E28600D0054BAF4 /* DirectionPoint.swift */,
+				13665AA41E28600D0054BAF4 /* Tracking.swift */,
+				13665AA51E28600D0054BAF4 /* TrackingPolyline.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		13665AA61E28600D0054BAF4 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				13665AA71E28600D0054BAF4 /* Color.swift */,
+				13665AA81E28600D0054BAF4 /* Constants.swift */,
+				13665AA91E28600D0054BAF4 /* DatabaseSupport.swift */,
+				13665AAA1E28600D0054BAF4 /* Extensions */,
+				13665AC41E28600D0054BAF4 /* Extensions.swift */,
+				13665AC51E28600D0054BAF4 /* HUD.swift */,
+				13665AC61E28600D0054BAF4 /* Image.swift */,
+				13665AC71E28600D0054BAF4 /* Lato Font */,
+				13665ACF1E28600D0054BAF4 /* LocationSupport.swift */,
+				13665AD01E28600D0054BAF4 /* LoggerSupport.swift */,
+				13665AD11E28600D0054BAF4 /* Rx */,
+				13665AD51E28600D0054BAF4 /* Utility.swift */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		13665AAA1E28600D0054BAF4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13665AC21E28600D0054BAF4 /* String+Ex.swift */,
+				13665AAE1E28600D0054BAF4 /* Realm+Ex.swift */,
+				13665AAF1E28600D0054BAF4 /* Rx */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		13665AAF1E28600D0054BAF4 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				13665AB31E28600D0054BAF4 /* Realm */,
+				13665ABF1E28600D0054BAF4 /* RxLocation */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		13665AB31E28600D0054BAF4 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				13665AB41E28600D0054BAF4 /* RealmObserver.swift */,
+				13665AB51E28600D0054BAF4 /* RxRealm.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		13665ABF1E28600D0054BAF4 /* RxLocation */ = {
+			isa = PBXGroup;
+			children = (
+				13665AC01E28600D0054BAF4 /* CLLocationManager+Rx.swift */,
+				13665AC11E28600D0054BAF4 /* RxCLLocationManagerDelegateProxy.swift */,
+			);
+			path = RxLocation;
+			sourceTree = "<group>";
+		};
+		13665AC71E28600D0054BAF4 /* Lato Font */ = {
+			isa = PBXGroup;
+			children = (
+				13665AC81E28600D0054BAF4 /* Lato-BlackItalic.ttf */,
+				13665AC91E28600D0054BAF4 /* Lato-Bold.ttf */,
+				13665ACA1E28600D0054BAF4 /* Lato-Italic.ttf */,
+				13665ACB1E28600D0054BAF4 /* Lato-Light.ttf */,
+				13665ACC1E28600D0054BAF4 /* Lato-Medium.ttf */,
+				13665ACD1E28600D0054BAF4 /* Lato-Regular.ttf */,
+				13665ACE1E28600D0054BAF4 /* Lato-Semibold.ttf */,
+			);
+			path = "Lato Font";
+			sourceTree = "<group>";
+		};
+		13665AD11E28600D0054BAF4 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				13665AD21E28600D0054BAF4 /* GoogleMap */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		13665AD21E28600D0054BAF4 /* GoogleMap */ = {
+			isa = PBXGroup;
+			children = (
+				13665AD31E28600D0054BAF4 /* GMSMapView+Rx.swift */,
+				13665AD41E28600D0054BAF4 /* RxGMSMapViewDelegateProxy.swift */,
+			);
+			path = GoogleMap;
+			sourceTree = "<group>";
+		};
+		13665AD61E28600D0054BAF4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13665AD71E28600D0054BAF4 /* Cell */,
+				13665ADD1E28600D0054BAF4 /* Tracking */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		13665AD71E28600D0054BAF4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				13665AD81E28600D0054BAF4 /* EmptyTableViewCell.swift */,
+				13665AD91E28600D0054BAF4 /* HeaderTableView.swift */,
+				13665ADA1E28600D0054BAF4 /* SeparatorTableViewCell.swift */,
+				13665ADB1E28600D0054BAF4 /* TitleSection.swift */,
+				13665ADC1E28600D0054BAF4 /* TrackingTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		13665ADD1E28600D0054BAF4 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				13665ADE1E28600D0054BAF4 /* TrackingControlFooterView.swift */,
+				13665ADF1E28600D0054BAF4 /* TrackingFloatView.swift */,
+				13665AE01E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift */,
+			);
+			path = Tracking;
 			sourceTree = "<group>";
 		};
 		AC8DED74E51CF020785F5D30 /* Frameworks */ = {
@@ -284,9 +524,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13665B021E28600D0054BAF4 /* Lato-BlackItalic.ttf in Resources */,
+				13665B061E28600D0054BAF4 /* Lato-Medium.ttf in Resources */,
+				13665B031E28600D0054BAF4 /* Lato-Bold.ttf in Resources */,
 				13665A771E285CF80054BAF4 /* LaunchScreen.storyboard in Resources */,
+				13665B071E28600D0054BAF4 /* Lato-Regular.ttf in Resources */,
+				13665B081E28600D0054BAF4 /* Lato-Semibold.ttf in Resources */,
 				13665A741E285CF80054BAF4 /* Assets.xcassets in Resources */,
+				13665B041E28600D0054BAF4 /* Lato-Italic.ttf in Resources */,
 				13665A721E285CF80054BAF4 /* Main.storyboard in Resources */,
+				13665B051E28600D0054BAF4 /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,8 +696,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13665B151E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift in Sources */,
+				13665B0F1E28600D0054BAF4 /* HeaderTableView.swift in Sources */,
+				13665AE81E28600D0054BAF4 /* TrackingPolyline.swift in Sources */,
+				13665AE11E28600D0054BAF4 /* GeneralViewController.swift in Sources */,
+				13665AF31E28600D0054BAF4 /* RxRealm.swift in Sources */,
+				13665AEF1E28600D0054BAF4 /* Realm+Ex.swift in Sources */,
+				13665B0C1E28600D0054BAF4 /* RxGMSMapViewDelegateProxy.swift in Sources */,
+				13665AE91E28600D0054BAF4 /* Color.swift in Sources */,
 				13665A6F1E285CF80054BAF4 /* ViewController.swift in Sources */,
+				13665B141E28600D0054BAF4 /* TrackingFloatView.swift in Sources */,
+				13665AE61E28600D0054BAF4 /* DirectionPoint.swift in Sources */,
+				13665AFC1E28600D0054BAF4 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
+				13665B011E28600D0054BAF4 /* Image.swift in Sources */,
+				13665B001E28600D0054BAF4 /* HUD.swift in Sources */,
+				13665B0E1E28600D0054BAF4 /* EmptyTableViewCell.swift in Sources */,
+				13665B0D1E28600D0054BAF4 /* Utility.swift in Sources */,
+				13665B131E28600D0054BAF4 /* TrackingControlFooterView.swift in Sources */,
+				13665B101E28600D0054BAF4 /* SeparatorTableViewCell.swift in Sources */,
+				13665AEB1E28600D0054BAF4 /* DatabaseSupport.swift in Sources */,
 				13665A6D1E285CF80054BAF4 /* AppDelegate.swift in Sources */,
+				13665B111E28600D0054BAF4 /* TitleSection.swift in Sources */,
+				13665AE41E28600D0054BAF4 /* TrackingViewController.swift in Sources */,
+				13665AFD1E28600D0054BAF4 /* String+Ex.swift in Sources */,
+				13665AE21E28600D0054BAF4 /* TrackingListsViewController.swift in Sources */,
+				13665AE71E28600D0054BAF4 /* Tracking.swift in Sources */,
+				13665B0B1E28600D0054BAF4 /* GMSMapView+Rx.swift in Sources */,
+				13665AE51E28600D0054BAF4 /* RealmTracking.swift in Sources */,
+				13665AE31E28600D0054BAF4 /* TrackingViewController+Rx.swift in Sources */,
+				13665B091E28600D0054BAF4 /* LocationSupport.swift in Sources */,
+				13665AEA1E28600D0054BAF4 /* Constants.swift in Sources */,
+				13665B121E28600D0054BAF4 /* TrackingTableViewCell.swift in Sources */,
+				13665B0A1E28600D0054BAF4 /* LoggerSupport.swift in Sources */,
+				13665AFB1E28600D0054BAF4 /* CLLocationManager+Rx.swift in Sources */,
+				13665AF21E28600D0054BAF4 /* RealmObserver.swift in Sources */,
+				13665AFF1E28600D0054BAF4 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +885,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
 				INFOPLIST_FILE = TrackingMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.binhanh.TrackingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -619,6 +900,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
 				INFOPLIST_FILE = TrackingMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.binhanh.TrackingMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
