@@ -53,7 +53,59 @@
 		13665B121E28600D0054BAF4 /* TrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665ADC1E28600D0054BAF4 /* TrackingTableViewCell.swift */; };
 		13665B131E28600D0054BAF4 /* TrackingControlFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665ADE1E28600D0054BAF4 /* TrackingControlFooterView.swift */; };
 		13665B141E28600D0054BAF4 /* TrackingFloatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665ADF1E28600D0054BAF4 /* TrackingFloatView.swift */; };
-		13665B151E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665AE01E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift */; };
+		13665B241E2861EF0054BAF4 /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B161E2861EF0054BAF4 /* Async.framework */; };
+		13665B251E2861EF0054BAF4 /* Async.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B161E2861EF0054BAF4 /* Async.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B261E2861EF0054BAF4 /* CleanroomASL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B171E2861EF0054BAF4 /* CleanroomASL.framework */; };
+		13665B271E2861EF0054BAF4 /* CleanroomASL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B171E2861EF0054BAF4 /* CleanroomASL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B281E2861EF0054BAF4 /* CleanroomLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B181E2861EF0054BAF4 /* CleanroomLogger.framework */; };
+		13665B291E2861EF0054BAF4 /* CleanroomLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B181E2861EF0054BAF4 /* CleanroomLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B2A1E2861EF0054BAF4 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B191E2861EF0054BAF4 /* Eureka.framework */; };
+		13665B2B1E2861EF0054BAF4 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B191E2861EF0054BAF4 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B2C1E2861EF0054BAF4 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1A1E2861EF0054BAF4 /* JGProgressHUD.framework */; };
+		13665B2D1E2861EF0054BAF4 /* JGProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1A1E2861EF0054BAF4 /* JGProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B2E1E2861EF0054BAF4 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1B1E2861EF0054BAF4 /* ObjectMapper.framework */; };
+		13665B2F1E2861EF0054BAF4 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1B1E2861EF0054BAF4 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B301E2861EF0054BAF4 /* OptionalExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1C1E2861EF0054BAF4 /* OptionalExtensions.framework */; };
+		13665B311E2861EF0054BAF4 /* OptionalExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1C1E2861EF0054BAF4 /* OptionalExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B321E2861EF0054BAF4 /* PHExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1D1E2861EF0054BAF4 /* PHExtensions.framework */; };
+		13665B331E2861EF0054BAF4 /* PHExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1D1E2861EF0054BAF4 /* PHExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B341E2861EF0054BAF4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1E1E2861EF0054BAF4 /* Realm.framework */; };
+		13665B351E2861EF0054BAF4 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1E1E2861EF0054BAF4 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B361E2861EF0054BAF4 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1F1E2861EF0054BAF4 /* RealmSwift.framework */; };
+		13665B371E2861EF0054BAF4 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B1F1E2861EF0054BAF4 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B381E2861EF0054BAF4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B201E2861EF0054BAF4 /* RxCocoa.framework */; };
+		13665B391E2861EF0054BAF4 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B201E2861EF0054BAF4 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B3A1E2861EF0054BAF4 /* RxExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B211E2861EF0054BAF4 /* RxExtensions.framework */; };
+		13665B3B1E2861EF0054BAF4 /* RxExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B211E2861EF0054BAF4 /* RxExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B3C1E2861EF0054BAF4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B221E2861EF0054BAF4 /* RxSwift.framework */; };
+		13665B3D1E2861EF0054BAF4 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B221E2861EF0054BAF4 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B3E1E2861EF0054BAF4 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B231E2861EF0054BAF4 /* SnapKit.framework */; };
+		13665B3F1E2861EF0054BAF4 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13665B231E2861EF0054BAF4 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13665B451E2862C00054BAF4 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B441E2862C00054BAF4 /* MapButton.swift */; };
+		13665B491E2862E90054BAF4 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B461E2862E90054BAF4 /* Avatar.swift */; };
+		13665B4A1E2862E90054BAF4 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B471E2862E90054BAF4 /* CenterView.swift */; };
+		13665B4B1E2862E90054BAF4 /* InforMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B481E2862E90054BAF4 /* InforMarkerView.swift */; };
+		13665B591E28634C0054BAF4 /* CompanyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B4D1E28634C0054BAF4 /* CompanyConfig.swift */; };
+		13665B5A1E28634C0054BAF4 /* TrackingGSMPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B4E1E28634C0054BAF4 /* TrackingGSMPoint.swift */; };
+		13665B5B1E28634C0054BAF4 /* TrackingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B4F1E28634C0054BAF4 /* TrackingInfo.swift */; };
+		13665B5C1E28634C0054BAF4 /* TrackingSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B501E28634C0054BAF4 /* TrackingSegment.swift */; };
+		13665B5D1E28634C0054BAF4 /* TrackingStopPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B511E28634C0054BAF4 /* TrackingStopPoint.swift */; };
+		13665B5E1E28634C0054BAF4 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B521E28634C0054BAF4 /* TrackingViewModel.swift */; };
+		13665B5F1E28634C0054BAF4 /* TripSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B531E28634C0054BAF4 /* TripSegment.swift */; };
+		13665B601E28634C0054BAF4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B541E28634C0054BAF4 /* UserInfo.swift */; };
+		13665B611E28634C0054BAF4 /* VehicleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B551E28634C0054BAF4 /* VehicleExtensions.swift */; };
+		13665B621E28634C0054BAF4 /* VehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B561E28634C0054BAF4 /* VehicleStatus.swift */; };
+		13665B631E28634C0054BAF4 /* VehicleTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B571E28634C0054BAF4 /* VehicleTrip.swift */; };
+		13665B641E28634C0054BAF4 /* VehicleUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B581E28634C0054BAF4 /* VehicleUpdate.swift */; };
+		13665B681E2863720054BAF4 /* PointMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B651E2863720054BAF4 /* PointMarker.swift */; };
+		13665B691E2863720054BAF4 /* StopMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B661E2863720054BAF4 /* StopMarker.swift */; };
+		13665B6A1E2863720054BAF4 /* VehicleMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B671E2863720054BAF4 /* VehicleMarker.swift */; };
+		13665B6C1E2863920054BAF4 /* TrackingMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B6B1E2863920054BAF4 /* TrackingMarkerInfoWindow.swift */; };
+		13665B731E2863F30054BAF4 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B6E1E2863F30054BAF4 /* MKButton.swift */; };
+		13665B741E2863F30054BAF4 /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B6F1E2863F30054BAF4 /* MKColor.swift */; };
+		13665B751E2863F30054BAF4 /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B701E2863F30054BAF4 /* MKLayer.swift */; };
+		13665B761E2863F30054BAF4 /* MKTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B711E2863F30054BAF4 /* MKTableViewCell.swift */; };
+		13665B771E2863F30054BAF4 /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13665B721E2863F30054BAF4 /* MKTextField.swift */; };
 		4D6889F11327E654B305A944 /* Pods_TrackingMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090D9477D51A1B36E405EE2F /* Pods_TrackingMe.framework */; };
 		674CC307198381590A33396A /* Pods_TrackingMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C790765D955E1D58FC704408 /* Pods_TrackingMeTests.framework */; };
 		F3D468462706C343077C0D71 /* Pods_TrackingMeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338010F6C509F4E0C259F03E /* Pods_TrackingMeUITests.framework */; };
@@ -75,6 +127,33 @@
 			remoteInfo = TrackingMe;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		13665B401E2861EF0054BAF4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				13665B3B1E2861EF0054BAF4 /* RxExtensions.framework in Embed Frameworks */,
+				13665B351E2861EF0054BAF4 /* Realm.framework in Embed Frameworks */,
+				13665B2F1E2861EF0054BAF4 /* ObjectMapper.framework in Embed Frameworks */,
+				13665B3F1E2861EF0054BAF4 /* SnapKit.framework in Embed Frameworks */,
+				13665B311E2861EF0054BAF4 /* OptionalExtensions.framework in Embed Frameworks */,
+				13665B331E2861EF0054BAF4 /* PHExtensions.framework in Embed Frameworks */,
+				13665B291E2861EF0054BAF4 /* CleanroomLogger.framework in Embed Frameworks */,
+				13665B3D1E2861EF0054BAF4 /* RxSwift.framework in Embed Frameworks */,
+				13665B2B1E2861EF0054BAF4 /* Eureka.framework in Embed Frameworks */,
+				13665B371E2861EF0054BAF4 /* RealmSwift.framework in Embed Frameworks */,
+				13665B271E2861EF0054BAF4 /* CleanroomASL.framework in Embed Frameworks */,
+				13665B2D1E2861EF0054BAF4 /* JGProgressHUD.framework in Embed Frameworks */,
+				13665B391E2861EF0054BAF4 /* RxCocoa.framework in Embed Frameworks */,
+				13665B251E2861EF0054BAF4 /* Async.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		090D9477D51A1B36E405EE2F /* Pods_TrackingMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackingMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +209,45 @@
 		13665ADC1E28600D0054BAF4 /* TrackingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingTableViewCell.swift; sourceTree = "<group>"; };
 		13665ADE1E28600D0054BAF4 /* TrackingControlFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingControlFooterView.swift; sourceTree = "<group>"; };
 		13665ADF1E28600D0054BAF4 /* TrackingFloatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingFloatView.swift; sourceTree = "<group>"; };
-		13665AE01E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingMarkerInfoWindow.swift; sourceTree = "<group>"; };
+		13665B161E2861EF0054BAF4 /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = TrackingMe/Framework/Async.framework; sourceTree = "<group>"; };
+		13665B171E2861EF0054BAF4 /* CleanroomASL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanroomASL.framework; path = TrackingMe/Framework/CleanroomASL.framework; sourceTree = "<group>"; };
+		13665B181E2861EF0054BAF4 /* CleanroomLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanroomLogger.framework; path = TrackingMe/Framework/CleanroomLogger.framework; sourceTree = "<group>"; };
+		13665B191E2861EF0054BAF4 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = TrackingMe/Framework/Eureka.framework; sourceTree = "<group>"; };
+		13665B1A1E2861EF0054BAF4 /* JGProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JGProgressHUD.framework; path = TrackingMe/Framework/JGProgressHUD.framework; sourceTree = "<group>"; };
+		13665B1B1E2861EF0054BAF4 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = TrackingMe/Framework/ObjectMapper.framework; sourceTree = "<group>"; };
+		13665B1C1E2861EF0054BAF4 /* OptionalExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OptionalExtensions.framework; path = TrackingMe/Framework/OptionalExtensions.framework; sourceTree = "<group>"; };
+		13665B1D1E2861EF0054BAF4 /* PHExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PHExtensions.framework; path = TrackingMe/Framework/PHExtensions.framework; sourceTree = "<group>"; };
+		13665B1E1E2861EF0054BAF4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = TrackingMe/Framework/Realm.framework; sourceTree = "<group>"; };
+		13665B1F1E2861EF0054BAF4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = TrackingMe/Framework/RealmSwift.framework; sourceTree = "<group>"; };
+		13665B201E2861EF0054BAF4 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = TrackingMe/Framework/RxCocoa.framework; sourceTree = "<group>"; };
+		13665B211E2861EF0054BAF4 /* RxExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxExtensions.framework; path = TrackingMe/Framework/RxExtensions.framework; sourceTree = "<group>"; };
+		13665B221E2861EF0054BAF4 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = TrackingMe/Framework/RxSwift.framework; sourceTree = "<group>"; };
+		13665B231E2861EF0054BAF4 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = TrackingMe/Framework/SnapKit.framework; sourceTree = "<group>"; };
+		13665B441E2862C00054BAF4 /* MapButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
+		13665B461E2862E90054BAF4 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		13665B471E2862E90054BAF4 /* CenterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
+		13665B481E2862E90054BAF4 /* InforMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforMarkerView.swift; sourceTree = "<group>"; };
+		13665B4D1E28634C0054BAF4 /* CompanyConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyConfig.swift; sourceTree = "<group>"; };
+		13665B4E1E28634C0054BAF4 /* TrackingGSMPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingGSMPoint.swift; sourceTree = "<group>"; };
+		13665B4F1E28634C0054BAF4 /* TrackingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingInfo.swift; sourceTree = "<group>"; };
+		13665B501E28634C0054BAF4 /* TrackingSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingSegment.swift; sourceTree = "<group>"; };
+		13665B511E28634C0054BAF4 /* TrackingStopPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingStopPoint.swift; sourceTree = "<group>"; };
+		13665B521E28634C0054BAF4 /* TrackingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
+		13665B531E28634C0054BAF4 /* TripSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSegment.swift; sourceTree = "<group>"; };
+		13665B541E28634C0054BAF4 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		13665B551E28634C0054BAF4 /* VehicleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleExtensions.swift; sourceTree = "<group>"; };
+		13665B561E28634C0054BAF4 /* VehicleStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleStatus.swift; sourceTree = "<group>"; };
+		13665B571E28634C0054BAF4 /* VehicleTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleTrip.swift; sourceTree = "<group>"; };
+		13665B581E28634C0054BAF4 /* VehicleUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleUpdate.swift; sourceTree = "<group>"; };
+		13665B651E2863720054BAF4 /* PointMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointMarker.swift; sourceTree = "<group>"; };
+		13665B661E2863720054BAF4 /* StopMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMarker.swift; sourceTree = "<group>"; };
+		13665B671E2863720054BAF4 /* VehicleMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleMarker.swift; sourceTree = "<group>"; };
+		13665B6B1E2863920054BAF4 /* TrackingMarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingMarkerInfoWindow.swift; sourceTree = "<group>"; };
+		13665B6E1E2863F30054BAF4 /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
+		13665B6F1E2863F30054BAF4 /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
+		13665B701E2863F30054BAF4 /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
+		13665B711E2863F30054BAF4 /* MKTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTableViewCell.swift; sourceTree = "<group>"; };
+		13665B721E2863F30054BAF4 /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
 		338010F6C509F4E0C259F03E /* Pods_TrackingMeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackingMeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A461BD7EFAEC5B560E2E86B /* Pods-TrackingMeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackingMeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrackingMeUITests/Pods-TrackingMeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6587B65E8667601E24243B52 /* Pods-TrackingMeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackingMeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrackingMeUITests/Pods-TrackingMeUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,7 +263,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13665B381E2861EF0054BAF4 /* RxCocoa.framework in Frameworks */,
 				4D6889F11327E654B305A944 /* Pods_TrackingMe.framework in Frameworks */,
+				13665B3C1E2861EF0054BAF4 /* RxSwift.framework in Frameworks */,
+				13665B3A1E2861EF0054BAF4 /* RxExtensions.framework in Frameworks */,
+				13665B281E2861EF0054BAF4 /* CleanroomLogger.framework in Frameworks */,
+				13665B2C1E2861EF0054BAF4 /* JGProgressHUD.framework in Frameworks */,
+				13665B261E2861EF0054BAF4 /* CleanroomASL.framework in Frameworks */,
+				13665B341E2861EF0054BAF4 /* Realm.framework in Frameworks */,
+				13665B241E2861EF0054BAF4 /* Async.framework in Frameworks */,
+				13665B3E1E2861EF0054BAF4 /* SnapKit.framework in Frameworks */,
+				13665B361E2861EF0054BAF4 /* RealmSwift.framework in Frameworks */,
+				13665B2A1E2861EF0054BAF4 /* Eureka.framework in Frameworks */,
+				13665B301E2861EF0054BAF4 /* OptionalExtensions.framework in Frameworks */,
+				13665B2E1E2861EF0054BAF4 /* ObjectMapper.framework in Frameworks */,
+				13665B321E2861EF0054BAF4 /* PHExtensions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +336,7 @@
 				13665A731E285CF80054BAF4 /* Assets.xcassets */,
 				13665A751E285CF80054BAF4 /* LaunchScreen.storyboard */,
 				13665A781E285CF80054BAF4 /* Info.plist */,
+				13665B411E2861F40054BAF4 /* Libraries */,
 			);
 			path = TrackingMe;
 			sourceTree = "<group>";
@@ -257,9 +389,8 @@
 		13665AA21E28600D0054BAF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				13665AA31E28600D0054BAF4 /* DirectionPoint.swift */,
-				13665AA41E28600D0054BAF4 /* Tracking.swift */,
-				13665AA51E28600D0054BAF4 /* TrackingPolyline.swift */,
+				13665B4C1E28634C0054BAF4 /* Tracker */,
+				13665B421E2862500054BAF4 /* Tracking */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,6 +485,7 @@
 		13665AD61E28600D0054BAF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				13665B431E2862C00054BAF4 /* Customs */,
 				13665AD71E28600D0054BAF4 /* Cell */,
 				13665ADD1E28600D0054BAF4 /* Tracking */,
 			);
@@ -375,12 +507,91 @@
 		13665ADD1E28600D0054BAF4 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
+				13665B6B1E2863920054BAF4 /* TrackingMarkerInfoWindow.swift */,
 				13665ADE1E28600D0054BAF4 /* TrackingControlFooterView.swift */,
 				13665ADF1E28600D0054BAF4 /* TrackingFloatView.swift */,
-				13665AE01E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
+		};
+		13665B411E2861F40054BAF4 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				13665B161E2861EF0054BAF4 /* Async.framework */,
+				13665B171E2861EF0054BAF4 /* CleanroomASL.framework */,
+				13665B181E2861EF0054BAF4 /* CleanroomLogger.framework */,
+				13665B191E2861EF0054BAF4 /* Eureka.framework */,
+				13665B1A1E2861EF0054BAF4 /* JGProgressHUD.framework */,
+				13665B1B1E2861EF0054BAF4 /* ObjectMapper.framework */,
+				13665B1C1E2861EF0054BAF4 /* OptionalExtensions.framework */,
+				13665B1D1E2861EF0054BAF4 /* PHExtensions.framework */,
+				13665B1E1E2861EF0054BAF4 /* Realm.framework */,
+				13665B1F1E2861EF0054BAF4 /* RealmSwift.framework */,
+				13665B201E2861EF0054BAF4 /* RxCocoa.framework */,
+				13665B211E2861EF0054BAF4 /* RxExtensions.framework */,
+				13665B221E2861EF0054BAF4 /* RxSwift.framework */,
+				13665B231E2861EF0054BAF4 /* SnapKit.framework */,
+			);
+			name = Libraries;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		13665B421E2862500054BAF4 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				13665AA31E28600D0054BAF4 /* DirectionPoint.swift */,
+				13665AA41E28600D0054BAF4 /* Tracking.swift */,
+				13665AA51E28600D0054BAF4 /* TrackingPolyline.swift */,
+			);
+			name = Tracking;
+			sourceTree = "<group>";
+		};
+		13665B431E2862C00054BAF4 /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+				13665B6D1E2863F30054BAF4 /* MateriaKit */,
+				13665B441E2862C00054BAF4 /* MapButton.swift */,
+				13665B461E2862E90054BAF4 /* Avatar.swift */,
+				13665B471E2862E90054BAF4 /* CenterView.swift */,
+				13665B481E2862E90054BAF4 /* InforMarkerView.swift */,
+				13665B651E2863720054BAF4 /* PointMarker.swift */,
+				13665B661E2863720054BAF4 /* StopMarker.swift */,
+				13665B671E2863720054BAF4 /* VehicleMarker.swift */,
+			);
+			path = Customs;
+			sourceTree = "<group>";
+		};
+		13665B4C1E28634C0054BAF4 /* Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				13665B4D1E28634C0054BAF4 /* CompanyConfig.swift */,
+				13665B4E1E28634C0054BAF4 /* TrackingGSMPoint.swift */,
+				13665B4F1E28634C0054BAF4 /* TrackingInfo.swift */,
+				13665B501E28634C0054BAF4 /* TrackingSegment.swift */,
+				13665B511E28634C0054BAF4 /* TrackingStopPoint.swift */,
+				13665B521E28634C0054BAF4 /* TrackingViewModel.swift */,
+				13665B531E28634C0054BAF4 /* TripSegment.swift */,
+				13665B541E28634C0054BAF4 /* UserInfo.swift */,
+				13665B551E28634C0054BAF4 /* VehicleExtensions.swift */,
+				13665B561E28634C0054BAF4 /* VehicleStatus.swift */,
+				13665B571E28634C0054BAF4 /* VehicleTrip.swift */,
+				13665B581E28634C0054BAF4 /* VehicleUpdate.swift */,
+			);
+			path = Tracker;
+			sourceTree = "<group>";
+		};
+		13665B6D1E2863F30054BAF4 /* MateriaKit */ = {
+			isa = PBXGroup;
+			children = (
+				13665B6E1E2863F30054BAF4 /* MKButton.swift */,
+				13665B6F1E2863F30054BAF4 /* MKColor.swift */,
+				13665B701E2863F30054BAF4 /* MKLayer.swift */,
+				13665B711E2863F30054BAF4 /* MKTableViewCell.swift */,
+				13665B721E2863F30054BAF4 /* MKTextField.swift */,
+			);
+			name = MateriaKit;
+			path = TrackingMe/Views/MateriaKit;
+			sourceTree = SOURCE_ROOT;
 		};
 		AC8DED74E51CF020785F5D30 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -418,6 +629,7 @@
 				13665A671E285CF80054BAF4 /* Resources */,
 				ED76E9EA2177FFDABF796929 /* [CP] Embed Pods Frameworks */,
 				FF1D0AF9398F139E8EC88481 /* [CP] Copy Pods Resources */,
+				13665B401E2861EF0054BAF4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -696,39 +908,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13665B151E28600D0054BAF4 /* TrackingMarkerInfoWindow.swift in Sources */,
 				13665B0F1E28600D0054BAF4 /* HeaderTableView.swift in Sources */,
 				13665AE81E28600D0054BAF4 /* TrackingPolyline.swift in Sources */,
 				13665AE11E28600D0054BAF4 /* GeneralViewController.swift in Sources */,
 				13665AF31E28600D0054BAF4 /* RxRealm.swift in Sources */,
 				13665AEF1E28600D0054BAF4 /* Realm+Ex.swift in Sources */,
 				13665B0C1E28600D0054BAF4 /* RxGMSMapViewDelegateProxy.swift in Sources */,
+				13665B601E28634C0054BAF4 /* UserInfo.swift in Sources */,
+				13665B681E2863720054BAF4 /* PointMarker.swift in Sources */,
 				13665AE91E28600D0054BAF4 /* Color.swift in Sources */,
+				13665B771E2863F30054BAF4 /* MKTextField.swift in Sources */,
+				13665B6A1E2863720054BAF4 /* VehicleMarker.swift in Sources */,
 				13665A6F1E285CF80054BAF4 /* ViewController.swift in Sources */,
 				13665B141E28600D0054BAF4 /* TrackingFloatView.swift in Sources */,
+				13665B731E2863F30054BAF4 /* MKButton.swift in Sources */,
+				13665B5D1E28634C0054BAF4 /* TrackingStopPoint.swift in Sources */,
 				13665AE61E28600D0054BAF4 /* DirectionPoint.swift in Sources */,
+				13665B6C1E2863920054BAF4 /* TrackingMarkerInfoWindow.swift in Sources */,
+				13665B751E2863F30054BAF4 /* MKLayer.swift in Sources */,
+				13665B591E28634C0054BAF4 /* CompanyConfig.swift in Sources */,
 				13665AFC1E28600D0054BAF4 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				13665B011E28600D0054BAF4 /* Image.swift in Sources */,
+				13665B5A1E28634C0054BAF4 /* TrackingGSMPoint.swift in Sources */,
+				13665B761E2863F30054BAF4 /* MKTableViewCell.swift in Sources */,
+				13665B5F1E28634C0054BAF4 /* TripSegment.swift in Sources */,
 				13665B001E28600D0054BAF4 /* HUD.swift in Sources */,
+				13665B691E2863720054BAF4 /* StopMarker.swift in Sources */,
+				13665B621E28634C0054BAF4 /* VehicleStatus.swift in Sources */,
+				13665B631E28634C0054BAF4 /* VehicleTrip.swift in Sources */,
 				13665B0E1E28600D0054BAF4 /* EmptyTableViewCell.swift in Sources */,
+				13665B5E1E28634C0054BAF4 /* TrackingViewModel.swift in Sources */,
+				13665B451E2862C00054BAF4 /* MapButton.swift in Sources */,
 				13665B0D1E28600D0054BAF4 /* Utility.swift in Sources */,
 				13665B131E28600D0054BAF4 /* TrackingControlFooterView.swift in Sources */,
+				13665B611E28634C0054BAF4 /* VehicleExtensions.swift in Sources */,
 				13665B101E28600D0054BAF4 /* SeparatorTableViewCell.swift in Sources */,
 				13665AEB1E28600D0054BAF4 /* DatabaseSupport.swift in Sources */,
 				13665A6D1E285CF80054BAF4 /* AppDelegate.swift in Sources */,
+				13665B5C1E28634C0054BAF4 /* TrackingSegment.swift in Sources */,
 				13665B111E28600D0054BAF4 /* TitleSection.swift in Sources */,
 				13665AE41E28600D0054BAF4 /* TrackingViewController.swift in Sources */,
 				13665AFD1E28600D0054BAF4 /* String+Ex.swift in Sources */,
 				13665AE21E28600D0054BAF4 /* TrackingListsViewController.swift in Sources */,
 				13665AE71E28600D0054BAF4 /* Tracking.swift in Sources */,
 				13665B0B1E28600D0054BAF4 /* GMSMapView+Rx.swift in Sources */,
+				13665B4A1E2862E90054BAF4 /* CenterView.swift in Sources */,
+				13665B641E28634C0054BAF4 /* VehicleUpdate.swift in Sources */,
 				13665AE51E28600D0054BAF4 /* RealmTracking.swift in Sources */,
 				13665AE31E28600D0054BAF4 /* TrackingViewController+Rx.swift in Sources */,
+				13665B4B1E2862E90054BAF4 /* InforMarkerView.swift in Sources */,
 				13665B091E28600D0054BAF4 /* LocationSupport.swift in Sources */,
+				13665B741E2863F30054BAF4 /* MKColor.swift in Sources */,
 				13665AEA1E28600D0054BAF4 /* Constants.swift in Sources */,
+				13665B491E2862E90054BAF4 /* Avatar.swift in Sources */,
 				13665B121E28600D0054BAF4 /* TrackingTableViewCell.swift in Sources */,
 				13665B0A1E28600D0054BAF4 /* LoggerSupport.swift in Sources */,
 				13665AFB1E28600D0054BAF4 /* CLLocationManager+Rx.swift in Sources */,
+				13665B5B1E28634C0054BAF4 /* TrackingInfo.swift in Sources */,
 				13665AF21E28600D0054BAF4 /* RealmObserver.swift in Sources */,
 				13665AFF1E28600D0054BAF4 /* Extensions.swift in Sources */,
 			);
@@ -884,6 +1120,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TrackingMe/Framework",
+				);
 				INFOPLIST_FILE = TrackingMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -899,6 +1139,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AQ4F7PFFSM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TrackingMe/Framework",
+				);
 				INFOPLIST_FILE = TrackingMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
