@@ -1,21 +1,41 @@
 //
 //  AppDelegate.swift
-//  TrackingMe
+//  TrakingMe
 //
-//  Created by Thành Lã on 1/13/17.
-//  Copyright © 2017 Thành Lã. All rights reserved.
+//  Created by Thành Lã on 12/30/16.
+//  Copyright © 2016 Bình Anh Electonics. All rights reserved.
 //
 
 import UIKit
+import GoogleMaps
+import CleanroomLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        FileManager.default.createAppDirectory("Log", skipBackupAttribute: true)
+        let path = FileManager.default.getDocumentDirectory().appendingPathComponent("Log")
+        Log.enable(configuration: CustomLogConfiguration(minimumSeverity: .verbose, dayToKeep: 60, filePath: path.path))
+        
+        return true
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let GMSServiceKey = "AIzaSyDGP7n2-4MKQjQ6ucNROKPDrjvWLM5etfo"
+        GMSServices.provideAPIKey(GMSServiceKey)
+        
+        let trackingsVC = TrackingListsViewController()
+        let navigationController = setupNavigationController(withRoot: trackingsVC)
+        
+        if let window = window {
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
+        }
+        
         return true
     }
 
@@ -38,9 +58,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.        
+        NotificationCenter.default.post(name: Notification.Name(AppNotification.SaveTrackingSignal.rawValue), object: nil)
     }
 
+
+    /**
+     Setup Navigation
+     */
+    fileprivate func setupNavigationController(withRoot viewController: UIViewController) -> UINavigationController {
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        Utility.shared.configureAppearance(navigation: navigationController)
+        
+        return navigationController
+    }
 
 }
 
