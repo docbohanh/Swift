@@ -318,6 +318,10 @@ extension TrackingsViewController {
 //MARK: TEXTFIELD DELEGATE
 //=======================================
 extension TrackingsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        trackingName = textField.text
+        print(trackingName)
+    }
     
 }
 
@@ -426,14 +430,6 @@ extension TrackingsViewController {
             
 
         }
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         

@@ -121,12 +121,14 @@ class CarMarker: GMSMarker {
     /**
      Animation di chuyển marker
      */
-    func animationMarkerMoveToPosition(_ positon: CLLocationCoordinate2D, duration: TimeInterval) {
+    func animationMarkerMoveToPosition(_ positon: CLLocationCoordinate2D, duration: TimeInterval, completion: (() -> Void)? = nil) {
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration)
         
         self.position = positon
         CATransaction.commit()
+        
+        if let completion = completion { completion() }
     }
     
     

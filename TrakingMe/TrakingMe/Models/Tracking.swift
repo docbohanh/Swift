@@ -101,7 +101,7 @@ extension Tracking {
     
     ///Mảng `DirectionPoint` gỗm hướng và vị trí của mũi tên chỉ hướng
     var directions: [DirectionPoint] {
-        return coordinates
+        let result = coordinates
             /**
              *  Từ coordinates tạo ra các cặp coordinate liên tiếp nhau
              */
@@ -123,7 +123,8 @@ extension Tracking {
                         longitude: (coordinates.first.longitude + coordinates.second.longitude) / 2),
                     direction: GMSGeometryHeading(coordinates.first, coordinates.second)
                 )
-            } + [DirectionPoint(coordinate: coordinates.last!, direction: GMSGeometryHeading(coordinates[coordinates.count - 1], coordinates.last!))]
+            }
+            return result + [DirectionPoint(coordinate: coordinates.last!, direction: result.last!.direction)]
     }
     
     ///Các cặp movent liên tiếp

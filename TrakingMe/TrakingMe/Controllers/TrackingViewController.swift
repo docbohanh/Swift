@@ -242,7 +242,10 @@ extension TrackingViewController {
         
         print("duration: \(duration)")
         carMarker?.animationMarkerMoveToPosition(position, duration: duration)
-        carMarker?.animationRotationWithDirection(direction)
+        
+        defer {
+            self.carMarker?.animationRotationWithDirection(direction)
+        }
         
         if trackingWhileDraggingSlider {
             animateOnMap(duration, mapView.animate(toLocation: position))
@@ -409,6 +412,7 @@ extension TrackingViewController: GMSMapViewDelegate {
         return true
     }
     
+    
 //    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
 //        
 //        let name = "MILIKET"
@@ -431,6 +435,7 @@ extension TrackingViewController: GMSMapViewDelegate {
 //        infoWindow.descriptions.text = descriptions
 //        return infoWindow
 //    }
+    
     
 }
 

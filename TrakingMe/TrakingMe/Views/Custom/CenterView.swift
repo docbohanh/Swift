@@ -7,8 +7,24 @@
 //
 
 import UIKit
+import PHExtensions
 
 class CenterView: UIView {
+    
+    fileprivate enum Size: CGFloat {
+        case label = 32, padding5 = 5
+    }
+    
+    var title: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: FontType.latoRegular.., size: FontSize.normal++)
+        label.textAlignment = .center
+        label.contentMode = .center
+        label.textColor = UIColor.main
+        label.clipsToBounds = true
+        label.isUserInteractionEnabled = true
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +45,16 @@ class CenterView: UIView {
         layer.shadowColor = UIColor.black.alpha(0.7).cgColor
         
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        title.frame = CGRect(x: Size.padding5..,
+                             y: (bounds.height - Size.label..) / 2 - 3,
+                             width: bounds.width - Size.padding5.. * 2,
+                             height: Size.label..)
+    }
+
         
     override func draw(_ rect: CGRect) {
         super.draw(rect)

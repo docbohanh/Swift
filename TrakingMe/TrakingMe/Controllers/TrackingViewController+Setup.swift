@@ -99,6 +99,7 @@ extension TrackingViewController {
         floatView = TrackingFloatView()
         view.addSubview(floatView)
         
+        guard let tracking = tracking else { return }
         floatView.totalDistance = tracking.totalKm * 1_000
         
         floatView.info = VehicleTrip.PointInfo(index: 1,
@@ -120,11 +121,14 @@ extension TrackingViewController {
     
     
     func setupCarMarker() {
-        guard let tracking = tracking else { return }
+        
         carMarker = CarMarker(info: vehicleOnline)
-        carMarker?.rotation = tracking.directions[0].direction
+
         carMarker?.map = mapView
         carMarker?.zIndex = 1000
+        mapView.selectedMarker = carMarker
+        guard let tracking = tracking else { return }
+        carMarker?.rotation = tracking.directions[0].direction
     }
     
     
