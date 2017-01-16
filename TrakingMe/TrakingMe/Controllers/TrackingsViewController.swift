@@ -400,15 +400,26 @@ extension TrackingsViewController {
 //                        cell.imageView?.image = Icon.Tracking.map
 //                    }
                 
+                
+                
                 let row = ButtonRow() { (row: ButtonRow) -> Void in
+                    
+                    row.cellUpdate({ (cell, row) in
+                        cell.textLabel?.textAlignment = .left
+                    })
+                    
+                    row.cellSetup({ (cell, row) in
+                        cell.height = { Size.cell.. }
+                    })
                     
                     row.title = tracking.name
                     row.tag = String(j)
+                    
                     }
                     .onCellSelection { [unowned self] (cell, row) in
                         
                         guard let str = row.tag, let aRow = Int(str) else { return }
-                        print("aRow: \(aRow)")
+                        print("selected row: \(aRow)")
                         
                         HUD.showHUD() {
                             let trackingVC = TrackingViewController()
@@ -425,7 +436,6 @@ extension TrackingsViewController {
             }
             
             form.append(section)
-            
             
             
 

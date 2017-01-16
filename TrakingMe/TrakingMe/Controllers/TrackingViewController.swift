@@ -253,7 +253,9 @@ extension TrackingViewController {
         
         guard case .play = self.footerView.playState else { return }
         
-        Timer.after(duration) { _ in
+        Timer.after(duration) { [weak self] _ in
+            
+            guard let `self` = self else { return }
             
             guard let tracking = self.tracking else { return }
             
