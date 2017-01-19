@@ -133,7 +133,7 @@ class TrackingsViewController: FormViewController {
 // MARK: - SELECTOR
 //-------------------------------------
 extension TrackingsViewController {
-    func tracking(_ sender: UIBarButtonItem) {
+    func newTracking(_ sender: UIBarButtonItem) {
         showAlert(type: .addNewTracking)
     }
 }
@@ -156,28 +156,21 @@ extension TrackingsViewController {
         }
     }
     
-    func refresh() {
-        dataArray = filterTrackingsData()
-        UIView.animate(withDuration: 0.3.second) {
-            //            self.tableView.reloadData()
-        }
-    }
-    
     func resetData() {
-//        insertDataTest()
         dataArray = filterTrackingsData()
         form.removeAll()
         setupFormTableView()
         
-        UIView.animate(withDuration: 0.3.second) {
-            //            self.tableView.reloadData()
-        }
     }
     
     
-    /**
-     Đếm số thứ tự của `row`
-     */
+    
+    /// Đếm số thứ tự từng `row` của table
+    ///
+    /// - Parameters:
+    ///   - row:
+    ///   - section:
+    /// - Returns:
     func numerical(ofRow row: Int, inSection section: Int) -> Int {
         var count = 0
         
@@ -200,7 +193,11 @@ extension TrackingsViewController {
         
     }
     
+    
+    /// Tạo ra mảng các `title section` của table
     ///
+    /// - Parameter trackings:
+    /// - Returns:
     func fixtureSectionData(of trackings: [[RealmTracking]]) -> [TitleSection] {
         
         return trackings.map { trackings -> TitleSection in
@@ -254,6 +251,10 @@ extension TrackingsViewController {
     }
     
     
+    /// Tính chiều cao của `table`
+    ///
+    /// - Parameter data:
+    /// - Returns:
     func calculateTableViewHeight(with data: [[RealmTracking]]) -> CGFloat {
         
         let sectionsHeight = Size.button.. * CGFloat(data.count)
@@ -392,7 +393,7 @@ extension TrackingsViewController {
         left.tintColor = .white
         navigationItem.leftBarButtonItem = left
         
-        let right = UIBarButtonItem(image: Icon.Nav.Add, style: .plain, target: self, action: #selector(self.tracking(_:)))
+        let right = UIBarButtonItem(image: Icon.Nav.Add, style: .plain, target: self, action: #selector(self.newTracking(_:)))
         right.tintColor = .white
         navigationItem.rightBarButtonItem = right
     }
@@ -418,9 +419,9 @@ extension TrackingsViewController {
                 $0.footer = footer
             }
             
-            for (aRow, track) in dataArray[aSection].enumerated() {
+            for (aRow, tracker) in dataArray[aSection].enumerated() {
                 
-                let tracking = track.convertToSyncType()
+                let tracking = tracker.convertToSyncType()
                 ///
                 let textRow = TextRow() { row in
                         let order = numerical(ofRow: aRow, inSection: aSection)
@@ -487,7 +488,7 @@ extension TrackingsViewController {
                         guard let newName = row.cell.textField.text, newName.characters.count > 0 else { return }
                         row.placeholder = newName
                         row.updateCell()
-                        DatabaseSupport.shared.updateName(of: track, with: newName)
+                        DatabaseSupport.shared.updateName(of: tracker, with: newName)
                     })
                 
                 
