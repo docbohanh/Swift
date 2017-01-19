@@ -26,7 +26,7 @@ class TrackingsViewController: FormViewController {
     
     fileprivate var dateTimeFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss\ndd/MM/yyyy"
+        formatter.dateFormat = "HH:mm\ndd/MM"
         return formatter
     }
     
@@ -38,7 +38,7 @@ class TrackingsViewController: FormViewController {
     
     fileprivate var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
+        formatter.dateFormat = "HH:mm"
         return formatter
     }
     
@@ -421,41 +421,6 @@ extension TrackingsViewController {
             for (aRow, track) in dataArray[aSection].enumerated() {
                 
                 let tracking = track.convertToSyncType()
-                
-//                let buttonRow = ButtonRow() { (row: ButtonRow) -> Void in
-//                    
-//                        row.cellUpdate({ (cell, row) in
-//                            cell.imageView?.image = Icon.Tracking.map
-//                            cell.textLabel?.textAlignment = .left
-//                            cell.textLabel?.textColor = UIColor.darkGray
-//                            cell.textLabel?.font = UIFont(name: FontType.latoSemibold.., size: FontSize.normal++)
-//                        })
-//                        
-//                        row.cellSetup({ (cell, row) in
-//                            cell.height = { Size.cell.. }
-//                        })
-//                    
-//                        let order = numerical(ofRow: aRow, inSection: aSection)
-//                        row.tag = String(order)
-//                        row.title = "\(order). " + tracking.name
-//                    
-//                    }
-//                    .onCellSelection { [unowned self] (cell, row) in
-//                        
-//                        guard let str = row.tag, let aRow = Int(str) else { return }
-//                        print("selected row: \(aRow)")
-//                        
-//                        HUD.showHUD() {
-//                            let trackingVC = TrackingViewController()
-//                            trackingVC.tracking = tracking
-//                            trackingVC.vehicleTrip = VehicleTrip(info: TrackingInfo(tracking: tracking))
-//                            trackingVC.vehicleOnline = VehicleOnline(tracking: tracking)
-//                            self.navigationController?.pushViewController(trackingVC, animated: true)
-//                            HUD.dismissHUD()
-//                            
-//                        }
-//                }
-//                
                 ///
                 let textRow = TextRow() { row in
                         let order = numerical(ofRow: aRow, inSection: aSection)
@@ -464,17 +429,38 @@ extension TrackingsViewController {
                         row.title = "\(order)."
                         row.placeholder = tracking.name
                         row.placeholderColor = UIColor.darkGray
-                        row.cellSetup({ (cell, row) in
-                            cell.height = { Size.cell.. }
-                        })
+                        row.textFieldPercentage = 0.81
+                    
                     }
+                    .cellSetup({ (cell, row) in
+                        cell.height = { Size.cell.. }
+                    })
                     .cellUpdate({ (cell, row) in
                         cell.textLabel?.textColor = UIColor.main
                         cell.textLabel?.font = UIFont(name: FontType.latoBold.., size: FontSize.normal++)
+                        cell.textLabel?.textAlignment = .right
                         
                         cell.textField.textAlignment = .left
-//                        cell.textField.text = tracking.name
                         cell.textField.clearButtonMode = .whileEditing
+                        
+                        let dateTime = self.dateTimeFormatter.string(from: Date(timeIntervalSince1970: tracking.movements[0].timestamp))
+                        
+                        let time = self.timeFormatter.string(from: Date(timeIntervalSince1970: tracking.movements[0].timestamp))
+                        
+                        let mutableStringTerms =  NSMutableAttributedString(string: dateTime,
+                                                                            attributes:[NSFontAttributeName: UIFont(name: FontType.latoRegular..,
+                                                                                                                    size: FontSize.small..)!,
+                                                                                        NSForegroundColorAttributeName: UIColor.gray])
+                        
+                        
+                        
+                        mutableStringTerms.addAttributes([NSFontAttributeName: UIFont(name: FontType.latoRegular.., size: FontSize.normal--)!,
+                                                          NSForegroundColorAttributeName: UIColor.darkGray],
+                                                         range: (dateTime as NSString).range(of: time))
+                        
+                        cell.detailTextLabel?.textAlignment = .center
+                        cell.detailTextLabel?.numberOfLines = 0
+                        cell.detailTextLabel?.attributedText = mutableStringTerms
                         
                     })
                     .onCellSelection({ (cell, row) in
@@ -483,12 +469,13 @@ extension TrackingsViewController {
                         guard let str = row.tag, let aRow = Int(str) else { return }
                         print("selected row: \(aRow)")
                         
-                        self.dismissKeyboard()
                         HUD.showHUD() {
                             let trackingVC = TrackingViewController()
                             trackingVC.tracking = tracking
                             trackingVC.vehicleTrip = VehicleTrip(info: TrackingInfo(tracking: tracking))
                             trackingVC.vehicleOnline = VehicleOnline(tracking: tracking)
+                            
+                            self.dismissKeyboard()
                             self.navigationController?.pushViewController(trackingVC, animated: true)
                             HUD.dismissHUD()
                             
@@ -497,7 +484,7 @@ extension TrackingsViewController {
                     })
                     .onChange({ (row) in
                         print("--> \(row.cell.textField.text)")
-                        guard let newName = row.cell.textField.text else { return }
+                        guard let newName = row.cell.textField.text, newName.characters.count > 0 else { return }
                         row.placeholder = newName
                         row.updateCell()
                         DatabaseSupport.shared.updateName(of: track, with: newName)
