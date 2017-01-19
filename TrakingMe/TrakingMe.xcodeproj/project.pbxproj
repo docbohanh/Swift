@@ -341,11 +341,8 @@
 			isa = PBXGroup;
 			children = (
 				1392DEA81E16BBD100ED5757 /* General */,
-				1392DE841E16B3E800ED5757 /* TrackingListsViewController.swift */,
-				1392DE861E16B3FD00ED5757 /* TrackingViewController.swift */,
-				1363842C1E28B8F800609C64 /* TrackingViewController+Setup.swift */,
-				134846BD1E1F7FEF008177E4 /* TrackingViewController+Rx.swift */,
-				1363842E1E28D5D300609C64 /* TrackingsViewController.swift */,
+				139E2B9D1E3052AB00A6887B /* Tracking list */,
+				139E2B9C1E30528E00A6887B /* Tracking details */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -470,6 +467,25 @@
 				134534BE1E23465D00A10930 /* TitleSection.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		139E2B9C1E30528E00A6887B /* Tracking details */ = {
+			isa = PBXGroup;
+			children = (
+				1392DE861E16B3FD00ED5757 /* TrackingViewController.swift */,
+				1363842C1E28B8F800609C64 /* TrackingViewController+Setup.swift */,
+				134846BD1E1F7FEF008177E4 /* TrackingViewController+Rx.swift */,
+			);
+			name = "Tracking details";
+			sourceTree = "<group>";
+		};
+		139E2B9D1E3052AB00A6887B /* Tracking list */ = {
+			isa = PBXGroup;
+			children = (
+				1392DE841E16B3E800ED5757 /* TrackingListsViewController.swift */,
+				1363842E1E28D5D300609C64 /* TrackingsViewController.swift */,
+			);
+			name = "Tracking list";
 			sourceTree = "<group>";
 		};
 		13A039091E1F8C8200F80C6D /* Rx */ = {

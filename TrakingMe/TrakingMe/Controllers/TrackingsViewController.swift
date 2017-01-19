@@ -166,6 +166,9 @@ extension TrackingsViewController {
     func resetData() {
 //        insertDataTest()
         dataArray = filterTrackingsData()
+        form.removeAll()
+        setupFormTableView()
+        
         UIView.animate(withDuration: 0.3.second) {
             //            self.tableView.reloadData()
         }
@@ -409,35 +412,78 @@ extension TrackingsViewController {
                 }
                 
                 $0.header = header
+                
+                var footer = HeaderFooterView<UIView>(.class)
+                footer.height = { 0.1 }
+                $0.footer = footer
             }
             
             for (aRow, track) in dataArray[aSection].enumerated() {
                 
                 let tracking = track.convertToSyncType()
                 
-                let row = ButtonRow() { (row: ButtonRow) -> Void in
-                    
-                        row.cellUpdate({ (cell, row) in
+//                let buttonRow = ButtonRow() { (row: ButtonRow) -> Void in
+//                    
+//                        row.cellUpdate({ (cell, row) in
 //                            cell.imageView?.image = Icon.Tracking.map
-                            cell.textLabel?.textAlignment = .left
-                            cell.textLabel?.textColor = UIColor.darkGray
-                            cell.textLabel?.font = UIFont(name: FontType.latoSemibold.., size: FontSize.normal++)
-                        })
-                        
+//                            cell.textLabel?.textAlignment = .left
+//                            cell.textLabel?.textColor = UIColor.darkGray
+//                            cell.textLabel?.font = UIFont(name: FontType.latoSemibold.., size: FontSize.normal++)
+//                        })
+//                        
+//                        row.cellSetup({ (cell, row) in
+//                            cell.height = { Size.cell.. }
+//                        })
+//                    
+//                        let order = numerical(ofRow: aRow, inSection: aSection)
+//                        row.tag = String(order)
+//                        row.title = "\(order). " + tracking.name
+//                    
+//                    }
+//                    .onCellSelection { [unowned self] (cell, row) in
+//                        
+//                        guard let str = row.tag, let aRow = Int(str) else { return }
+//                        print("selected row: \(aRow)")
+//                        
+//                        HUD.showHUD() {
+//                            let trackingVC = TrackingViewController()
+//                            trackingVC.tracking = tracking
+//                            trackingVC.vehicleTrip = VehicleTrip(info: TrackingInfo(tracking: tracking))
+//                            trackingVC.vehicleOnline = VehicleOnline(tracking: tracking)
+//                            self.navigationController?.pushViewController(trackingVC, animated: true)
+//                            HUD.dismissHUD()
+//                            
+//                        }
+//                }
+//                
+                ///
+                let textRow = TextRow() { row in
+                        let order = numerical(ofRow: aRow, inSection: aSection)
+                        row.tag = String(order)
+                    
+                        row.title = "\(order)."
+                        row.placeholder = tracking.name
+                        row.placeholderColor = UIColor.darkGray
                         row.cellSetup({ (cell, row) in
                             cell.height = { Size.cell.. }
                         })
-                    
-                        let order = numerical(ofRow: aRow, inSection: aSection)
-                        row.tag = String(order)
-                        row.title = "\(order). " + tracking.name
-                    
                     }
-                    .onCellSelection { [unowned self] (cell, row) in
+                    .cellUpdate({ (cell, row) in
+                        cell.textLabel?.textColor = UIColor.main
+                        cell.textLabel?.font = UIFont(name: FontType.latoBold.., size: FontSize.normal++)
+                        
+                        cell.textField.textAlignment = .left
+//                        cell.textField.text = tracking.name
+                        cell.textField.clearButtonMode = .whileEditing
+                        
+                    })
+                    .onCellSelection({ (cell, row) in
+                        print(cell.textField.text ?? "empty")
                         
                         guard let str = row.tag, let aRow = Int(str) else { return }
                         print("selected row: \(aRow)")
                         
+                        self.dismissKeyboard()
                         HUD.showHUD() {
                             let trackingVC = TrackingViewController()
                             trackingVC.tracking = tracking
@@ -447,13 +493,21 @@ extension TrackingsViewController {
                             HUD.dismissHUD()
                             
                         }
-                }
+                        
+                    })
+                    .onChange({ (row) in
+                        print("--> \(row.cell.textField.text)")
+                        guard let newName = row.cell.textField.text else { return }
+                        row.placeholder = newName
+                        row.updateCell()
+                        DatabaseSupport.shared.updateName(of: track, with: newName)
+                    })
                 
-                section.append(row)
+                
+                section.append(textRow)
             }
             
             form.append(section)
-            
             
             
         }

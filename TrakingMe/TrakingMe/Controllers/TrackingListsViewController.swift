@@ -221,6 +221,11 @@ extension TrackingListsViewController {
         }
     }
     
+    
+    /// Tính chiều cao của `table`
+    ///
+    /// - Parameter data: Mảng dữ liệu `dataArray`
+    /// - Returns:
     func calculateTableViewHeight(with data: [[RealmTracking]]) -> CGFloat {
         
         let sectionsHeight = Size.button.. * CGFloat(data.count)
@@ -229,6 +234,7 @@ extension TrackingListsViewController {
         return sectionsHeight + rowsHeight
     }
     
+    /// Ẩn bàn phím
     func dismissKeyboard() {
         view.endEditing(true)
     }
