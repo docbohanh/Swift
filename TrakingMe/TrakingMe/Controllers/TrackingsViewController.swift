@@ -80,8 +80,8 @@ class TrackingsViewController: FormViewController {
         super.viewDidLoad()
         dataArray = filterTrackingsData()
         titleSections = fixtureSectionData(of: dataArray)
-        LocationSupport.shared.requestLocationAuthorization(.always)
         
+        LocationSupport.shared.requestLocationAuthorization(.always)
         locationManager.delegate = self
         
         
@@ -164,7 +164,7 @@ extension TrackingsViewController {
     }
     
     func resetData() {
-        insertDataTest()
+//        insertDataTest()
         dataArray = filterTrackingsData()
         UIView.animate(withDuration: 0.3.second) {
             //            self.tableView.reloadData()
@@ -172,6 +172,32 @@ extension TrackingsViewController {
     }
     
     
+    /**
+     Đếm số thứ tự của `row`
+     */
+    func numerical(ofRow row: Int, inSection section: Int) -> Int {
+        var count = 0
+        
+        if section == 0 {
+            count = row + 1
+        } else {
+            count = row + 1 + numberOfRow(inSection: section)
+        }
+
+        return count
+    }
+    
+    
+    /// Đếm số lượng `row` từ `section = 0` đến `section - 1`
+    ///
+    /// - Parameter section: `section`
+    /// - Returns: Int
+    func numberOfRow(inSection section: Int) -> Int {
+        return (0..<section).map { dataArray[$0].count }.reduce(0, +)
+        
+    }
+    
+    ///
     func fixtureSectionData(of trackings: [[RealmTracking]]) -> [TitleSection] {
         
         return trackings.map { trackings -> TitleSection in
@@ -216,7 +242,7 @@ extension TrackingsViewController {
         
     }
     
-    /// Hàm tính thời gian bắt đầu bước sang ngày mới
+    /// Tính thời gian bắt đầu bước sang ngày mới
     ///
     /// - Parameter time: TimeInterval
     /// - Returns: TimeInterval
@@ -224,10 +250,6 @@ extension TrackingsViewController {
         return time - time.truncatingRemainder(dividingBy: 1.day)
     }
     
-    func numberOfRow(ofAnother section: Int) -> Int {
-        return (0..<section).map { dataArray[$0].count }.reduce(0, +)
-        
-    }
     
     func calculateTableViewHeight(with data: [[RealmTracking]]) -> CGFloat {
         
@@ -237,6 +259,7 @@ extension TrackingsViewController {
         return sectionsHeight + rowsHeight
     }
     
+    ///
     func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -370,50 +393,44 @@ extension TrackingsViewController {
         right.tintColor = .white
         navigationItem.rightBarButtonItem = right
     }
-
+    
     
     fileprivate func setupFormTableView() {
         
-        for (i, item) in titleSections.enumerated() {
+        for (aSection, item) in titleSections.enumerated() {
             
             let section = Section() {
                 
-                        var header = HeaderFooterView<HeaderTableView>(.class)
-                        header.height = { 44 }
-                        
-                        header.onSetupView = { (headerView, section) -> () in
-                            headerView.title.text = item.title
-                        }
+                var header = HeaderFooterView<HeaderTableView>(.class)
+                header.height = { 44 }
                 
-                    $0.header = header
+                header.onSetupView = { (headerView, section) -> () in
+                    headerView.title.text = item.title
                 }
+                
+                $0.header = header
+            }
             
-            for (j, track) in dataArray[i].enumerated() {
+            for (aRow, track) in dataArray[aSection].enumerated() {
                 
                 let tracking = track.convertToSyncType()
                 
-//                let row = NameRow() {
-//                        $0.title = tracking.name
-//                        $0.placeholder = tracking.id
-//                    }
-//                    .cellSetup { cell, row in
-//                        cell.imageView?.image = Icon.Tracking.map
-//                    }
-                
-                
-                
                 let row = ButtonRow() { (row: ButtonRow) -> Void in
                     
-                    row.cellUpdate({ (cell, row) in
-                        cell.textLabel?.textAlignment = .left
-                    })
+                        row.cellUpdate({ (cell, row) in
+//                            cell.imageView?.image = Icon.Tracking.map
+                            cell.textLabel?.textAlignment = .left
+                            cell.textLabel?.textColor = UIColor.darkGray
+                            cell.textLabel?.font = UIFont(name: FontType.latoSemibold.., size: FontSize.normal++)
+                        })
+                        
+                        row.cellSetup({ (cell, row) in
+                            cell.height = { Size.cell.. }
+                        })
                     
-                    row.cellSetup({ (cell, row) in
-                        cell.height = { Size.cell.. }
-                    })
-                    
-                    row.title = tracking.name
-                    row.tag = String(j)
+                        let order = numerical(ofRow: aRow, inSection: aSection)
+                        row.tag = String(order)
+                        row.title = "\(order). " + tracking.name
                     
                     }
                     .onCellSelection { [unowned self] (cell, row) in
@@ -438,7 +455,7 @@ extension TrackingsViewController {
             form.append(section)
             
             
-
+            
         }
         
         

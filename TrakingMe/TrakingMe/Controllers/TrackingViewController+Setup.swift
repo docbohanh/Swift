@@ -99,7 +99,7 @@ extension TrackingViewController {
         floatView = TrackingFloatView()
         view.addSubview(floatView)
         
-        guard let tracking = tracking else { return }
+        guard let tracking = tracking, tracking.movements.count > 0 else { return }
         floatView.totalDistance = tracking.totalKm * 1_000
         
         floatView.info = VehicleTrip.PointInfo(index: 1,

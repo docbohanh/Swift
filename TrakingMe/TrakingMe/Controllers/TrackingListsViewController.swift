@@ -201,7 +201,7 @@ extension TrackingListsViewController {
         return time - time.truncatingRemainder(dividingBy: 1.day)
     }
     
-    func numberOfRow(ofAnother section: Int) -> Int {
+    func numberOfRow(inSection section: Int) -> Int {
         return (0..<section).map { dataArray[$0].count }.reduce(0, +)
         
     }
@@ -412,7 +412,7 @@ extension TrackingListsViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             count = indexPath.row + 1
         } else {
-            count = indexPath.row + 1 + numberOfRow(ofAnother: indexPath.section)
+            count = indexPath.row + 1 + numberOfRow(inSection: indexPath.section)
         }
         
         
