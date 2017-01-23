@@ -128,7 +128,7 @@ extension TrackingViewController {
         carMarker?.zIndex = 1000
         mapView.selectedMarker = carMarker
         guard let tracking = tracking else { return }
-        carMarker?.rotation = tracking.directions[0].direction
+        carMarker?.animationRotationWithDirection(tracking.directions[0].direction)
     }
     
     

@@ -26,6 +26,7 @@ public func delay(_ delay: Double, closure:@escaping () -> () ) {
 struct Utility {
     static let shared = Utility()
     
+    
     /**
      Tính chiều rộng của text
      */

@@ -78,6 +78,8 @@ class TrackingsViewController: FormViewController {
     //-------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        insertDataTest()
+        
         dataArray = filterTrackingsData()
         titleSections = fixtureSectionData(of: dataArray)
         
@@ -429,7 +431,7 @@ extension TrackingsViewController {
                     
                         row.title = "\(order)."
                         row.placeholder = tracking.name
-                        row.placeholderColor = UIColor.darkGray
+                        row.placeholderColor = UIColor.main
                         row.textFieldPercentage = 0.81
                     
                     }
@@ -471,6 +473,10 @@ extension TrackingsViewController {
                         print("selected row: \(aRow)")
                         
                         HUD.showHUD() {
+//                            print(Utility.shared.getGMSPath(from: tracking.movements.map { $0.coordinate }).encodedPath())
+//                            print("-------------")
+//                            print(tracking.movements.map { $0.timestamp })
+                            
                             let trackingVC = TrackingViewController()
                             trackingVC.tracking = tracking
                             trackingVC.vehicleTrip = VehicleTrip(info: TrackingInfo(tracking: tracking))

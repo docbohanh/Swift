@@ -231,6 +231,7 @@ extension TrackingViewController {
             time: vehicleTrip.timeArray[currentPosition],
             direction: tracking.directions[currentPosition].direction)
         
+        
     }
 
     /// Animation di chuyển Marker
@@ -238,14 +239,12 @@ extension TrackingViewController {
         
         if carMarker == nil { setupCarMarker() }
         
-        let duration = 1.second / footerView.playSpeed.multiplier
+        let duration = time / footerView.playSpeed.multiplier
         
         print("duration: \(duration)")
         carMarker?.animationMarkerMoveToPosition(position, duration: duration)
-        
-        defer {
-            self.carMarker?.animationRotationWithDirection(direction)
-        }
+        self.carMarker?.animationRotationWithDirection(direction)
+//        carMarker?.animateMarkerForTracking(position, moveDuration: time, rotateDuration: direction)
         
         if trackingWhileDraggingSlider {
             animateOnMap(duration, mapView.animate(toLocation: position))
@@ -278,6 +277,9 @@ extension TrackingViewController {
                 vehicleTrip.points[self.currentPosition].coordinate,
                 time: vehicleTrip.timeArray[self.currentPosition],
                 direction: tracking.directions[self.currentPosition].direction)
+//            self.carMarker?.animateMarkerForTracking(vehicleTrip.points[self.currentPosition].coordinate,
+//                                                moveDuration: vehicleTrip.timeArray[self.currentPosition],
+//                                                rotateDuration: tracking.directions[self.currentPosition].direction)
             
             self.floatView.info = vehicleTrip.points[self.currentPosition]
             

@@ -54,7 +54,7 @@ class HeaderTableView: UIView {
         
         
         addSubview(title)
-        addSubview(seperator)
+//        addSubview(seperator)
         addSubview(arrow)
     }
     
