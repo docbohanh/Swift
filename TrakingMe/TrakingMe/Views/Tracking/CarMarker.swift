@@ -60,7 +60,7 @@ class CarMarker: GMSMarker {
         self.info = info
         
         super.init()
-        self.tracksViewChanges = false
+        self.tracksViewChanges = true
         self.isTappable = true
         self.isFlat = true
         self.groundAnchor = CGPoint(x: 0.5, y: 0.66)
@@ -89,11 +89,11 @@ class CarMarker: GMSMarker {
     
     
     
-    fileprivate func setupIconView(_ plate: String = "35M1-034.31") -> CarMarkerView {
+    fileprivate func setupIconView(_ plate: String = "35M1-03431") -> CarMarkerView {
         //TODO: setup view có label là plate
         // có marker xe dựa vào trạng thái xe
         
-        let name = "35M1-034.31"
+        let name = "35M1-03431"
         let width = Size.padding10.. + Utility.shared.widthForView(text: name.uppercased(),
                                                                    font: UIFont(name: FontType.latoSemibold..,
                                                                                 size: FontSize.small..)!,
@@ -110,11 +110,11 @@ class CarMarker: GMSMarker {
      */
     func animationRotationWithDirection(_ direction: CLLocationDegrees) {
         UIView.animate(withDuration: durationRotation, animations: { _ in
-//            let rotate = CGFloat(direction) / 180 * CGFloat(M_PI)
-//            print("rotate: \(rotate)")
-//            self.craMarkerView.image.transform = CGAffineTransform(rotationAngle: rotate)
-            print("direction: \(direction)")
-            self.rotation = direction
+            let rotate = CGFloat(direction) / 180 * CGFloat(M_PI)
+            print("rotate: \(rotate)")
+            self.craMarkerView.image.transform = CGAffineTransform(rotationAngle: rotate)
+//            print("direction: \(direction)")
+//            self.rotation = direction
         })
     }
     
@@ -170,7 +170,7 @@ private class CarMarkerView: UIView {
         label = setupLabel()
         image = setupImageView()
         
-//        addSubview(label)
+        addSubview(label)
         addSubview(image)
     }
     

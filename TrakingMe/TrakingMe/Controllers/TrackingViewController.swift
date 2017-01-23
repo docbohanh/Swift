@@ -239,7 +239,7 @@ extension TrackingViewController {
         
         if carMarker == nil { setupCarMarker() }
         
-        let duration = time / footerView.playSpeed.multiplier
+        let duration = 0.5 / footerView.playSpeed.multiplier
         
         print("duration: \(duration)")
         carMarker?.animationMarkerMoveToPosition(position, duration: duration)
