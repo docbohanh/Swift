@@ -23,6 +23,10 @@ extension TrackingViewController {
         setupMapView()
         setupBarButton()
         setupMyLocation()
+        setupStartTracking()
+        startTracking.isEnabled = false
+        startTracking.alpha = 0
+        
         setupFloatView()
         setupFooterView()
                 
@@ -45,10 +49,14 @@ extension TrackingViewController {
         }
         
         myLocation.snp.makeConstraints { (make) in
-            make.height.equalTo(Size.button..)
-            make.width.equalTo(Size.button..)
+            make.width.height.equalTo(Size.button..)
             make.right.equalTo(view.snp.right).inset(Size.padding15..)
             make.bottom.equalTo(footerView.snp.top).offset(-Size.padding15..)
+        }
+        
+        startTracking.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalTo(view)
+            make.width.height.equalTo(64)
         }
         
         floatView.snp.makeConstraints { (make) in
@@ -73,16 +81,16 @@ extension TrackingViewController {
     fileprivate func setupBarButton() {
         switch state {
         case .normal:
-            let left = UIBarButtonItem(image: Icon.Nav.Back, style: .plain, target: self, action: #selector(self.back(_:)))
-            left.tintColor = .white
+            
+            let left = setupBarButton(image: Icon.Nav.Back, selector: #selector(self.back(_:)), target: self)
             navigationItem.leftBarButtonItem = left
             
-            info = UIBarButtonItem(image: Icon.Nav.info, style: .plain, target: self, action: #selector(self.infoFloatView(_:)))
-            info.tintColor = .white
-            navigationItem.rightBarButtonItem = info
+            infoFloatView = setupBarButton(image: Icon.Nav.info, selector: #selector(self.infoFloatView(_:)), target: self)
+            deleteTracking = setupBarButton(image: Icon.Nav.del, selector: #selector(self.deleteTracking(_:)), target: self)
+            navigationItem.rightBarButtonItems = [deleteTracking, infoFloatView]
             
         case .tracking:
-            let left = UIBarButtonItem(image: Icon.Nav.Done, style: .plain, target: self, action: #selector(self.saveTracking(_:)))
+            let left = UIBarButtonItem(image: Icon.Nav.Done, style: .plain, target: self, action: #selector(self.save(_:)))
             left.tintColor = .white
             navigationItem.leftBarButtonItem = left
         }
@@ -93,6 +101,15 @@ extension TrackingViewController {
         myLocation.setImage(Icon.General.myLocation.tint(UIColor.main), for: UIControlState())
         myLocation.addTarget(self, action: #selector(self.myLocation(_:)), for: .touchUpInside)
         view.addSubview(myLocation)
+    }
+    
+    func setupStartTracking() {
+        startTracking = MapButton()
+        startTracking.setTitle("Start", for: UIControlState())
+        startTracking.titleLabel?.font = UIFont(name: FontType.latoSemibold.., size: FontSize.large..)
+        startTracking.setTitleColor(UIColor.main, for: UIControlState())
+        startTracking.addTarget(self, action: #selector(self.startTracking(_:)), for: .touchUpInside)
+        view.addSubview(startTracking)
     }
     
     fileprivate func setupFloatView() {

@@ -78,14 +78,13 @@ class TrackingsViewController: FormViewController {
     //-------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        insertDataTest()
+//        insertDataTest()
         
         dataArray = filterTrackingsData()
         titleSections = fixtureSectionData(of: dataArray)
         
         LocationSupport.shared.requestLocationAuthorization(.always)
         locationManager.delegate = self
-        
         
         setupAllSubviews()
         view.setNeedsUpdateConstraints()
@@ -160,6 +159,7 @@ extension TrackingsViewController {
     
     func resetData() {
         dataArray = filterTrackingsData()
+        titleSections = fixtureSectionData(of: dataArray)
         form.removeAll()
         setupFormTableView()
         
@@ -366,7 +366,7 @@ extension TrackingsViewController: CLLocationManagerDelegate {
 
 extension TrackingsViewController: TrackingViewControllerDelegate {
     func reloadTable() {
-        
+        resetData()
     }
 }
 
@@ -444,6 +444,7 @@ extension TrackingsViewController {
                         cell.textLabel?.textAlignment = .right
                         
                         cell.textField.textAlignment = .left
+                        cell.textField.textColor = UIColor.main
                         cell.textField.clearButtonMode = .whileEditing
                         
                         let dateTime = self.dateTimeFormatter.string(from: Date(timeIntervalSince1970: tracking.movements[0].timestamp))
@@ -481,6 +482,8 @@ extension TrackingsViewController {
                             trackingVC.tracking = tracking
                             trackingVC.vehicleTrip = VehicleTrip(info: TrackingInfo(tracking: tracking))
                             trackingVC.vehicleOnline = VehicleOnline(tracking: tracking)
+                            trackingVC.delegate = self
+                            trackingVC.state = .normal
                             
                             self.dismissKeyboard()
                             self.navigationController?.pushViewController(trackingVC, animated: true)
@@ -513,3 +516,4 @@ extension TrackingsViewController {
     
     
 }
+

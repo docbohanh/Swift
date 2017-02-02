@@ -34,7 +34,9 @@ class TrackingViewController: GeneralViewController {
         
     var mapView: GMSMapView!
     var myLocation: MapButton!
-    var info: UIBarButtonItem!
+    var startTracking: MapButton!    
+    var infoFloatView: UIBarButtonItem!
+    var deleteTracking: UIBarButtonItem!
     
     var floatView: TrackingFloatView!
     
@@ -55,7 +57,7 @@ class TrackingViewController: GeneralViewController {
     
     var carMarker: CarMarker?
     
-    var polyline: GMSPolyline?
+    var polyline: TrackingPolyline?
     
     var vehicleTrip: VehicleTrip?
     
@@ -68,6 +70,24 @@ class TrackingViewController: GeneralViewController {
     enum State {
         case normal
         case tracking
+    }
+    
+    enum AlertType {
+        case deleteTracking
+        
+        var alertTitle: String {
+            switch self {
+            case .deleteTracking:
+                return "Xóa lộ trình"
+            }
+        }
+        
+        var alertMessage: String {
+            switch self {
+            case .deleteTracking:
+                return "Bạn có đồng ý xóa lộ trình này không?"
+            }
+        }
     }
     
     internal var location: CLLocationCoordinate2D {
@@ -86,16 +106,18 @@ class TrackingViewController: GeneralViewController {
         view.setNeedsUpdateConstraints()
         
         guard state == .normal, let tracking = self.tracking else {
-            rx_userMovementTracking()
-            rx_updateTrackingToRealm()
+            startTracking.isEnabled = true
+            startTracking.alpha = 1
             return
         }
         
-        drawTracking() {
-            self.zoomBoundsMap(coordinates: tracking.movements.map { $0.coordinate }, incudingMyLocation: nil)
-            self.setupCarMarker()
-        }
+//        drawTracking() {
+//            self.zoomBoundsMap(coordinates: tracking.movements.map { $0.coordinate }, incudingMyLocation: nil)
+//            self.setupCarMarker()
+//        }
         
+        self.zoomBoundsMap(coordinates: tracking.movements.map { $0.coordinate }, incudingMyLocation: nil)
+        self.setupCarMarker()
         
         
     }
@@ -120,10 +142,12 @@ class TrackingViewController: GeneralViewController {
         if state == .tracking {
             self.mapView.animate(to: GMSCameraPosition.camera(withTarget: location, zoom: 15.5))
         }
-        
-        animateOnMap(0.3.second, mapView.animate(to: GMSCameraPosition.camera(withTarget: tracking.coordinates[0], zoom: 16))) {
-            self.animationForTracking()
+        else {
+            animateOnMap(0.3.second, mapView.animate(to: GMSCameraPosition.camera(withTarget: tracking.coordinates[0], zoom: 16))) {
+                self.animationForTracking()
+            }
         }
+        
     }
 }
 
@@ -137,13 +161,23 @@ extension TrackingViewController {
         
     }
     
-    func saveTracking(_ sender: UIBarButtonItem) {
+    func deleteTracking(_ sender: UIBarButtonItem) {
+//        guard let tracking = tracking else { return }
+//        
+//        HUD.showHUD("Đang xóa") {
+//            DatabaseSupport.shared.deleteTracking(id: tracking.id)
+//            self.delegate?.reloadTable()
+//            _ = self.navigationController?.popViewController(animated: true)
+//            HUD.dismissHUD()
+//        }
+        showAlertController(.deleteTracking)
+    }
+    
+    func save(_ sender: UIBarButtonItem) {
         
-        /// Gửi tín hiệu cập nhật tracking vào DB
-        saveTrackingSignal.onNext()
-        
-        delegate?.reloadTable()
-        _ = navigationController?.popViewController(animated: true)
+        saveTracking { 
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func back(_ sender: UIBarButtonItem) {
@@ -161,11 +195,51 @@ extension TrackingViewController {
         animateOnMap(0.5.second, mapView.animate(toLocation: location.coordinate))
         
     }
+    
+    func startTracking(_ sender: MapButton) {
+        setVisibilityOf(startTracking, to: false)
+        rx_userMovementTracking()
+        rx_updateTrackingToRealm()
+    }
 }
 
 
 //MARK: PRIVATE METHOD
 extension TrackingViewController {
+    
+    func showAlertController(_ type: AlertType) {
+        alertController = UIAlertController(title: type.alertTitle, message: type.alertMessage, preferredStyle: .alert)
+        
+        switch type {
+        case .deleteTracking:
+            alertController?.addAction(UIAlertAction(title: "OK", style: .default, handler: { [unowned self] _ in
+                guard let tracking = self.tracking else { return }
+                
+                HUD.showHUD("Đang xóa") {
+                    DatabaseSupport.shared.deleteTracking(id: tracking.id)
+                    self.delegate?.reloadTable()
+                    _ = self.navigationController?.popViewController(animated: true)
+                    HUD.dismissHUD()
+                }
+            }))
+            
+            alertController?.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        }
+        
+        present(alertController!, animated: true, completion: nil)
+    }
+    
+    func saveTracking(complete: (() -> Void)? = nil) {
+        
+        /// Gửi tín hiệu cập nhật tracking vào DB
+        saveTrackingSignal.onNext()
+        delegate?.reloadTable()
+        
+        if let complete = complete {
+            complete()
+        }
+    }
     
     func animationForTracking() {
         
@@ -187,8 +261,7 @@ extension TrackingViewController {
         
         currentPosition = 0
         
-        drawPolyline(vehicleTrip.path)
-        
+        drawPolyline(vehicleTrip.path)        
         
         print("vehicleTrip.stopPoints: \(vehicleTrip.stopPoints.count)")
         
@@ -217,7 +290,7 @@ extension TrackingViewController {
         floatViewLeadingConstraint.update(offset: 5)
         footerViewBottomConstraint.update(offset: 0)
         
-        navigationItem.rightBarButtonItem = info
+        navigationItem.rightBarButtonItems = [deleteTracking, infoFloatView]
         UIView.animate(withDuration: 0.3.second, animations: { self.view.layoutSubviews() })
         
         /**
@@ -363,9 +436,7 @@ extension TrackingViewController {
     /// Vẽ Polyline trên Map
     func drawPolyline(_ path: GMSPath) {
         
-        polyline = GMSPolyline(path: path)
-        polyline?.strokeColor = UIColor(rgba: "#1E90FF")
-        polyline?.strokeWidth = 3
+        polyline = TrackingPolyline(tracking: tracking)
         polyline?.map = mapView
     }
     

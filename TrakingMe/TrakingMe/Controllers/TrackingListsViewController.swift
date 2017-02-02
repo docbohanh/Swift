@@ -79,17 +79,18 @@ class TrackingListsViewController: GeneralViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DatabaseSupport.shared.getTracking().map{ ($0.id, $0.time) }.forEach { print($0) }
         
 //        insertDataTest()
         
-        dataArray = filterTrackingsData()
-        titleSections = fixtureSectionData(of: dataArray)
-        LocationSupport.shared.requestLocationAuthorization(.always)
+//        dataArray = filterTrackingsData()
+//        titleSections = fixtureSectionData(of: dataArray)
+//        LocationSupport.shared.requestLocationAuthorization(.always)
+//        
+//        locationManager.delegate = self
         
-        locationManager.delegate = self
-        
-        setupAllSubviews()
-        view.setNeedsUpdateConstraints()
+//        setupAllSubviews()
+//        view.setNeedsUpdateConstraints()
         
        
     }
@@ -100,13 +101,13 @@ class TrackingListsViewController: GeneralViewController {
     }
     
 
-    override func updateViewConstraints() {
-        if !didSetupConstraints {
-            setupAllConstraints()
-            didSetupConstraints = true
-        }
-        super.updateViewConstraints()
-    }
+//    override func updateViewConstraints() {
+//        if !didSetupConstraints {
+//            setupAllConstraints()
+//            didSetupConstraints = true
+//        }
+//        super.updateViewConstraints()
+//    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
