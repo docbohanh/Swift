@@ -391,9 +391,9 @@ extension TrackingsViewController {
     
     fileprivate func setupBarButton() {
         
-        let left = UIBarButtonItem(image: Icon.Nav.Refesh, style: .plain, target: self, action: #selector(self.resetData))
-        left.tintColor = .white
-        navigationItem.leftBarButtonItem = left
+//        let left = UIBarButtonItem(image: Icon.Nav.Refesh, style: .plain, target: self, action: #selector(self.resetData))
+//        left.tintColor = .white
+//        navigationItem.leftBarButtonItem = left
         
         let right = UIBarButtonItem(image: Icon.Nav.Add, style: .plain, target: self, action: #selector(self.newTracking(_:)))
         right.tintColor = .white
