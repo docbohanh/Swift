@@ -86,11 +86,11 @@ extension TrackingViewController {
             navigationItem.leftBarButtonItem = left
             
             infoFloatView = setupBarButton(image: Icon.Nav.info, selector: #selector(self.infoFloatView(_:)), target: self)
-            deleteTracking = setupBarButton(image: Icon.Nav.del, selector: #selector(self.deleteTracking(_:)), target: self)
+            deleteTracking = setupBarButton(image: Icon.Nav.Trash, selector: #selector(self.deleteTracking(_:)), target: self)
             navigationItem.rightBarButtonItems = [deleteTracking, infoFloatView]
             
         case .tracking:
-            let left = UIBarButtonItem(image: Icon.Nav.Done, style: .plain, target: self, action: #selector(self.save(_:)))
+            let left = UIBarButtonItem(image: Icon.Nav.Back, style: .plain, target: self, action: #selector(self.save(_:)))
             left.tintColor = .white
             navigationItem.leftBarButtonItem = left
         }

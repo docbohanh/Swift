@@ -437,6 +437,7 @@ extension TrackingsViewController {
                     }
                     .cellSetup({ (cell, row) in
                         cell.height = { Size.cell.. }
+                        cell.textField.text = tracking.name
                     })
                     .cellUpdate({ (cell, row) in
                         cell.textLabel?.textColor = UIColor.main
@@ -446,6 +447,7 @@ extension TrackingsViewController {
                         cell.textField.textAlignment = .left
                         cell.textField.textColor = UIColor.main
                         cell.textField.clearButtonMode = .whileEditing
+//                        cell.textField.text = tracking.name
                         
                         let dateTime = self.dateTimeFormatter.string(from: Date(timeIntervalSince1970: tracking.movements[0].timestamp))
                         
@@ -495,7 +497,7 @@ extension TrackingsViewController {
                     .onChange({ (row) in
                         print("--> \(row.cell.textField.text)")
                         guard let newName = row.cell.textField.text, newName.characters.count > 0 else { return }
-                        row.placeholder = newName
+                        
                         row.updateCell()
                         DatabaseSupport.shared.updateName(of: tracker, with: newName)
                     })
