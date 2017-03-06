@@ -176,7 +176,7 @@ extension TrackingViewController {
     func save(_ sender: UIBarButtonItem) {
         
         saveTracking { 
-            _ = self.navigationController?.popViewController(animated: true)
+            delay(1.second) {_ = self.navigationController?.popViewController(animated: true)}
         }
     }
     
@@ -235,7 +235,6 @@ extension TrackingViewController {
         /// Gửi tín hiệu cập nhật tracking vào DB
         saveTrackingSignal.onNext()
         delegate?.reloadTable()
-        
         if let complete = complete {
             complete()
         }
