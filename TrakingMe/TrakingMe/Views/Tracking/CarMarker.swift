@@ -108,14 +108,15 @@ class CarMarker: GMSMarker {
     /**
      Animation quay marker với góc "direction"
      */
-    func animationRotationWithDirection(_ direction: CLLocationDegrees) {
-        UIView.animate(withDuration: durationRotation, animations: { _ in
+    func animationRotationWithDirection(_ direction: CLLocationDegrees, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.25, animations: { _ in
             let rotate = CGFloat(direction) / 180 * CGFloat(M_PI)
             print("rotate: \(rotate)")
             self.craMarkerView.image.transform = CGAffineTransform(rotationAngle: rotate)
-//            print("direction: \(direction)")
-//            self.rotation = direction
+
         })
+        
+        if let completion = completion { completion() }
     }
     
     /**

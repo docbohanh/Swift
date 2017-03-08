@@ -80,8 +80,8 @@ class TrackingsViewController: FormViewController {
         super.viewDidLoad()
 //        insertDataTest()
         
-        dataArray = filterTrackingsData()
-        titleSections = fixtureSectionData(of: dataArray)
+        dataArray = filterTrackingsData().reversed()
+        titleSections = fixtureSectionData(of: dataArray).reversed()
         
         LocationSupport.shared.requestLocationAuthorization(.always)
         locationManager.delegate = self
@@ -158,8 +158,8 @@ extension TrackingsViewController {
     }
     
     func resetData() {
-        dataArray = filterTrackingsData()
-        titleSections = fixtureSectionData(of: dataArray)
+        dataArray = filterTrackingsData().reversed()
+        titleSections = fixtureSectionData(of: dataArray).reversed()
         form.removeAll()
         setupFormTableView()
         
@@ -226,7 +226,8 @@ extension TrackingsViewController {
         /// Lọc theo từng khoảng thời gian `time`
         var result = [[RealmTracking]]()
         
-        DatabaseSupport.shared.getTracking().forEach { tracking in
+        DatabaseSupport.shared.getTracking()
+            .forEach { tracking in
             
             if result.count == 0 {
                 result.append([tracking])

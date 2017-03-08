@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     fileprivate var counter: UILabel!
     fileprivate var tapButton: UIButton!
+    fileprivate var loginFb: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +60,11 @@ extension ViewController {
         tapButton.addTarget(self, action: #selector(self.tapMe(_:)), for: .touchUpInside)
         
         setupBarButton()
+        loginFb = setupButton()
         
         view.addSubview(counter)
         view.addSubview(tapButton)
-        
+        view.addSubview(loginFb)
     }
     
     fileprivate func setupAllConstraints() {
@@ -81,6 +83,19 @@ extension ViewController {
             make.top.equalTo(counter.snp.bottom).offset(-15)
         }
         
+        loginFb.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.width.equalTo(100)
+            make.height.equalTo(50)
+            make.top.equalTo(tapButton.snp.bottom).offset(-15)
+        }
+        
+    }
+    
+    func setupButton() -> UIButton {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(self.login(_:)), for: .touchUpInside)
+        return button
     }
     
     fileprivate func setupLabel() -> UILabel {
@@ -114,6 +129,22 @@ extension ViewController {
 
 //MARK: PRIVATE METHOD
 extension ViewController {
+    func login(_ sender: UIButton) {
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+            if (error == nil){
+                let fbloginresult : FBSDKLoginManagerLoginResult = result!
+                if fbloginresult.grantedPermissions != nil {
+                    if(fbloginresult.grantedPermissions.contains("email"))
+                    {
+                        self.getFBUserData()
+                        fbLoginManager.logOut()
+                    }
+                }
+            }
+        }
+    }
+    
     func reset(_ sender: UIBarButtonItem) {
         counter.text = "0"
     }

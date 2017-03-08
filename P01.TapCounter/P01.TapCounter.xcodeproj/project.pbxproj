@@ -27,8 +27,39 @@
 		136450A51E1423FC00FC8B2E /* MKTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450A01E1423FC00FC8B2E /* MKTableViewCell.swift */; };
 		136450A61E1423FC00FC8B2E /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450A11E1423FC00FC8B2E /* MKTextField.swift */; };
 		136450A81E14263800FC8B2E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136450A71E14263800FC8B2E /* Color.swift */; };
+		139D7E891E6DBE85004E7E8B /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E831E6DBE85004E7E8B /* FacebookCore.framework */; };
+		139D7E8A1E6DBE85004E7E8B /* FacebookCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E831E6DBE85004E7E8B /* FacebookCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		139D7E8B1E6DBE85004E7E8B /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E841E6DBE85004E7E8B /* FacebookLogin.framework */; };
+		139D7E8C1E6DBE85004E7E8B /* FacebookLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E841E6DBE85004E7E8B /* FacebookLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		139D7E8D1E6DBE85004E7E8B /* FacebookShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E851E6DBE85004E7E8B /* FacebookShare.framework */; };
+		139D7E8E1E6DBE85004E7E8B /* FacebookShare.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E851E6DBE85004E7E8B /* FacebookShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		139D7E8F1E6DBE85004E7E8B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E861E6DBE85004E7E8B /* FBSDKCoreKit.framework */; };
+		139D7E901E6DBE85004E7E8B /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E861E6DBE85004E7E8B /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		139D7E911E6DBE85004E7E8B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E871E6DBE85004E7E8B /* FBSDKLoginKit.framework */; };
+		139D7E921E6DBE85004E7E8B /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E871E6DBE85004E7E8B /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		139D7E931E6DBE85004E7E8B /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E881E6DBE85004E7E8B /* FBSDKShareKit.framework */; };
+		139D7E941E6DBE85004E7E8B /* FBSDKShareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E881E6DBE85004E7E8B /* FBSDKShareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4465118EF2AB032BEE91F724 /* Pods_P01_TapCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CD2DD5E05E2974CF34070B /* Pods_P01_TapCounter.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		139D7E951E6DBE85004E7E8B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				139D7E8E1E6DBE85004E7E8B /* FacebookShare.framework in Embed Frameworks */,
+				139D7E901E6DBE85004E7E8B /* FBSDKCoreKit.framework in Embed Frameworks */,
+				139D7E941E6DBE85004E7E8B /* FBSDKShareKit.framework in Embed Frameworks */,
+				139D7E921E6DBE85004E7E8B /* FBSDKLoginKit.framework in Embed Frameworks */,
+				139D7E8C1E6DBE85004E7E8B /* FacebookLogin.framework in Embed Frameworks */,
+				139D7E8A1E6DBE85004E7E8B /* FacebookCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		130342CD1E148908006595B4 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -53,6 +84,12 @@
 		136450A01E1423FC00FC8B2E /* MKTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTableViewCell.swift; sourceTree = "<group>"; };
 		136450A11E1423FC00FC8B2E /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
 		136450A71E14263800FC8B2E /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		139D7E831E6DBE85004E7E8B /* FacebookCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookCore.framework; path = Framework/FacebookCore.framework; sourceTree = "<group>"; };
+		139D7E841E6DBE85004E7E8B /* FacebookLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookLogin.framework; path = Framework/FacebookLogin.framework; sourceTree = "<group>"; };
+		139D7E851E6DBE85004E7E8B /* FacebookShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookShare.framework; path = Framework/FacebookShare.framework; sourceTree = "<group>"; };
+		139D7E861E6DBE85004E7E8B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Framework/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		139D7E871E6DBE85004E7E8B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Framework/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		139D7E881E6DBE85004E7E8B /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Framework/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		30CD2DD5E05E2974CF34070B /* Pods_P01_TapCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_P01_TapCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4703A4F5E52D05B5F48E56E /* Pods-P01.TapCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-P01.TapCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-P01.TapCounter/Pods-P01.TapCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		E9727A43499C2E647D29A6D4 /* Pods-P01.TapCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-P01.TapCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-P01.TapCounter/Pods-P01.TapCounter.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,7 +100,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139D7E8F1E6DBE85004E7E8B /* FBSDKCoreKit.framework in Frameworks */,
+				139D7E8D1E6DBE85004E7E8B /* FacebookShare.framework in Frameworks */,
+				139D7E911E6DBE85004E7E8B /* FBSDKLoginKit.framework in Frameworks */,
+				139D7E931E6DBE85004E7E8B /* FBSDKShareKit.framework in Frameworks */,
 				4465118EF2AB032BEE91F724 /* Pods_P01_TapCounter.framework in Frameworks */,
+				139D7E8B1E6DBE85004E7E8B /* FacebookLogin.framework in Frameworks */,
+				139D7E891E6DBE85004E7E8B /* FacebookCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +211,12 @@
 		6279555699790F8C3CDAE78F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				139D7E831E6DBE85004E7E8B /* FacebookCore.framework */,
+				139D7E841E6DBE85004E7E8B /* FacebookLogin.framework */,
+				139D7E851E6DBE85004E7E8B /* FacebookShare.framework */,
+				139D7E861E6DBE85004E7E8B /* FBSDKCoreKit.framework */,
+				139D7E871E6DBE85004E7E8B /* FBSDKLoginKit.framework */,
+				139D7E881E6DBE85004E7E8B /* FBSDKShareKit.framework */,
 				30CD2DD5E05E2974CF34070B /* Pods_P01_TapCounter.framework */,
 			);
 			name = Frameworks;
@@ -186,6 +235,7 @@
 				1364506B1E14202400FC8B2E /* Resources */,
 				CD94EA48DDBF35260F1E4B92 /* [CP] Embed Pods Frameworks */,
 				AD9BF1B8081BBCCC6FA06EFF /* [CP] Copy Pods Resources */,
+				139D7E951E6DBE85004E7E8B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -439,6 +489,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FrameWork",
+					"$(PROJECT_DIR)/Framework",
 				);
 				INFOPLIST_FILE = P01.TapCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -457,6 +508,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FrameWork",
+					"$(PROJECT_DIR)/Framework",
 				);
 				INFOPLIST_FILE = P01.TapCounter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
